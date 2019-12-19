@@ -7,6 +7,7 @@ itsdangerous==1.1.0
 Jinja2==2.10.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
+-e git+https://github.com/raghadzeidan/first_project.git@ca0bfdacdd00c59726557be4c67e32aebffcbfbd#egg=my_project
 pycodestyle==2.5.0
 pyflakes==2.1.1
 pytz==2019.3
