@@ -41,13 +41,18 @@ class Thought:
         thought_bytes = str.encode(self.thought)
         data = user_bytes + time_bytes + length_bytes + thought_bytes
         return data
+    
+    @staticmethod
+    def thought_length_from_metadata(metadata):
+        length_bytes = metadata[16:20][::-1]
+        length = render_from_bytes(length_bytes)
+        return length
 
     @staticmethod
-    def deserialize( data):
+    def deserialize(data):
         userb, timeb, lengthb = data[0:8][::-1], data[8:16][::-1], data[16:20][::-1]
         thoughtb = data[20:][::-1]
         time_stamp = render_from_bytes(timeb)
-        lengthh = render_from_bytes(lengthb)
         user = render_from_bytes(userb)
         thought = thoughtb.decode('utf-8')
         thought = thought[::-1]
