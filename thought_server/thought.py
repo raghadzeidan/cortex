@@ -1,30 +1,39 @@
 import datetime
 import sys
 
+
 def render_from_bytes(byytes):
     result = 0
     for b in byytes:
         result = result * 256 + int(b)
     return result
 
+
 def render_to_bytes(string, num_bytes):
     barray = bytearray(string.to_bytes(num_bytes, sys.byteorder))
     bbytes = bytes(barray)
     return bbytes
+
+
 class Thought:
-    '''Thought object takes user id, thought as a string and time as a datetime.datetime Object '''
-    def __init__(self, user_id,time, thought):
+    '''Thought object takes user id, thought as a string and
+    time as a datetime.datetime Object'''
+    def __init__(self, user_id, time, thought):
         self.user_id = user_id
         self.thought = thought
         self.timestamp = time
+    
     def __repr__(self):
         return f'Thought(user_id={self.user_id!r}, timestamp={self.timestamp!r}, thought={self.thought!r})'
+    
     def __str__(self):
         return f'[{str(self.timestamp)}] user {self.user_id}: {self.thought}'
+    
     def __eq__(self, other):
         if not(isinstance(self, Thought) and isinstance(other, Thought)):
             return False
         return self.user_id == other.user_id and self.timestamp == other.timestamp and self.thought == other.thought
+    
     def serialize(self):
         user_bytes = render_to_bytes(self.user_id, 8)
         time_bytes = render_to_bytes(int(self.timestamp.timestamp()), 8)
