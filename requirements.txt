@@ -7,7 +7,6 @@ itsdangerous==1.1.0
 Jinja2==2.10.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
-more-itertools==8.0.2
 -e git+https://github.com/raghadzeidan/first_project.git@b25a34d900bce224301ea8834250699764a7f994#egg=my_project
 packaging==19.2
 pluggy==0.13.1
