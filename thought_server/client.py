@@ -3,17 +3,16 @@ import math
 import sys, socket
 import datetime 
 from .thought import Thought
-
+from .utils import Connection
 def upload_thought(address, user_id, thought):
     ip, port = address
     seconds = int(time.time())
     timestamp_obj = datetime.datetime.fromtimestamp(seconds)
     thought_obj = Thought(user_id, timestamp_obj, thought)
     data = thought_obj.serialize()
-    sockt = socket.socket()
-    sockt.connect((ip,int(port)))
-    sockt.sendall(data)
-    sockt.close()
+    connection = Connection.connect(ip,port)
+    connection.send(data)
+    connection.close()
 
 #client.py does not support commandline, TODO: consider returning it
 def main(argv):

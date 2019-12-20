@@ -28,7 +28,6 @@ class Connection:
 
     @classmethod
     def connect(cls, host, port):
-        print(host, port)
         s = socket.socket()
         s.connect((host,port))
         return Connection(s)
