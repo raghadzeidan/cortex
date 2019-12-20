@@ -1,5 +1,4 @@
 Click==7.0
-Django==2.2.8
 entrypoints==0.3
 flake8==3.7.9
 Flask==1.1.1
