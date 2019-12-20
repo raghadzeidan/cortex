@@ -11,7 +11,8 @@ def render_to_bytes(string, num_bytes):
     barray = bytearray(string.to_bytes(num_bytes, sys.byteorder))
     bbytes = bytes(barray)
     return bbytes
-class Thought:  
+class Thought:
+    '''Thought object takes user id, thought as a string and time as a datetime.datetime Object '''
     def __init__(self, user_id,time, thought):
         self.user_id = user_id
         self.thought = thought

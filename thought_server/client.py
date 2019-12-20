@@ -1,27 +1,21 @@
 import time
 import math
 import sys, socket
-#this is the client.py of exercise 1, TODO: Update it to match
-#thought.py in q2 of exercise 3. its better implemented
-#TODO: Solve duplicate code of render_to_bytes and from bytes
-def render_to_bytes(user_id, num_bytes):
-    user_id_bytearray = bytearray(user_id.to_bytes(num_bytes,sys.byteorder))
-    user_id_bytes = bytes(user_id_bytearray)
-    return user_id_bytes
+import datetime 
+from .thought import Thought
 
 def upload_thought(address, user_id, thought):
-    address_tuple = tuple(address.split(':'))
-    ip, port = address_tuple
+    ip, port = address
     seconds = int(time.time())
-    user_id_bytes = render_to_bytes(int(user_id), 8)
-    timestamp_bytes = render_to_bytes(seconds, 8)
-    thought_length_bytes = render_to_bytes(len(thought),4)
-    thought_bytes = str.encode(thought)[::-1]
-    data = user_id_bytes + timestamp_bytes + thought_length_bytes + thought_bytes
+    timestamp_obj = datetime.datetime.fromtimestamp(seconds)
+    thought_obj = Thought(user_id, timestamp_obj, thought)
+    data = thought_obj.serialize()
     sockt = socket.socket()
     sockt.connect((ip,int(port)))
     sockt.sendall(data)
     sockt.close()
+
+#client.py does not support commandline, TODO: consider returning it
 def main(argv):
     if len(argv) != 4:
         print(f'USAGE: {argv[0]} <address> <user_id> <thought>')
