@@ -4,6 +4,7 @@ import sys, socket
 import datetime 
 from .thought import Thought
 from .utils import Connection
+from .utils import Reader
 def upload_thought(address, user_id, thought):
     ip, port = address
     seconds = int(time.time())
@@ -13,6 +14,11 @@ def upload_thought(address, user_id, thought):
     connection = Connection.connect(ip,port)
     connection.send(data)
     connection.close()
+
+def run():
+    
+
+
 
 #client.py does not support commandline, TODO: consider returning it
 def main(argv):
