@@ -15,10 +15,13 @@ class Listener:
             self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.s.bind((self.host, self.port))
         self.s.listen(self.backlog)
+        self.active_connections = 0
     def stop(self):
+        self.active_connections = 0
         self.s.close()
     def accept(self):
         client_address, client_port = self.s.accept()
+        self.active_connections = self.active_connections + 1
         return Connection(client_address)
     def __enter__(self):
         self.start()

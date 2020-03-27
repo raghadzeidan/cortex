@@ -7,8 +7,9 @@ import threading
 import os
 from .utils import Connection, Listener
 from .thought import Thought
+import concurrent.futures as cf
 lock = threading.Lock()
-
+THREADS_NUMBER = 5
 METADATA_LENGTH = 20
 
 def handle_connection(connection, dir_path):
@@ -30,7 +31,13 @@ def handle_connection(connection, dir_path):
             f.write(thought + "\n")
         print(thought)
 
-
+def run_server(host, port, publish):
+    listener = Listener(port, host)
+    listener.start()
+    executor = cf.ThreadPoolExecutor(THREADS_NUMBER)
+    while True:
+        connection = listener.accept()
+    
 
 def run_server(address, data_dir):
     address_parsed = address.split(':')
