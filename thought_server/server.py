@@ -30,7 +30,8 @@ def handle_connection(connection, dir_path):
             f.write(thought + "\n")
         print(thought)
 
-            
+
+
 def run_server(address, data_dir):
     address_parsed = address.split(':')
     ip = address_parsed[0]
