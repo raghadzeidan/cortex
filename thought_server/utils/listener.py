@@ -2,7 +2,7 @@ from .connection import Connection
 import socket
 
 class Listener:
-    def __init__(self, port, host='0.0.0.0', backlog=1000, reuseaddr=True):
+    def __init__(self,port,host='0.0.0.0', backlog=1000, reuseaddr=True):
         self.port = port
         self.host = host
         self.backlog = backlog

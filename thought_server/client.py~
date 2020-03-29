@@ -24,9 +24,8 @@ logging.basicConfig(level = logging.DEBUG,
     
 
 def upload_thought(ip,port):
-    logging.info('sending data')
     connection = Connection.connect(ip,port)
-    connection.send(b"abcde")
+    connection.send("raghd")
     connection.close()
 
 #client.py does not support commandline, TODO: consider returning it
