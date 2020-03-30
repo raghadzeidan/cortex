@@ -1,0 +1,6 @@
+D 2020-03-31 02:43:37 Starting new HTTP connection (1): localhost:8000
+D 2020-03-31 02:43:37 http://localhost:8000 "POST / HTTP/1.1" 200 None
+D 2020-03-31 02:43:54 Starting new HTTP connection (1): localhost:8000
+D 2020-03-31 02:43:54 http://localhost:8000 "POST / HTTP/1.1" 200 None
+D 2020-03-31 02:44:19 Starting new HTTP connection (1): localhost:8000
+D 2020-03-31 02:44:19 http://localhost:8000 "GET / HTTP/1.1" 200 None
