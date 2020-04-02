@@ -1,3 +1,2 @@
 import logging
-
-print(2)
+print("inside __init__ of server")

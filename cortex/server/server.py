@@ -7,26 +7,41 @@ import concurrent.futures as cf
 import pika
 #from parsers_utils.mq import channel
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from ..parsers import parse_that_fucking_image
 HREADS_NUMBER = 5
 METADATA_LENGTH = 20
+AVAILABLE_PARSERS=set()
 
 logging.basicConfig(level = logging.DEBUG, 
                 filename = '.logs.txt',
                 format = '%(levelname).1s %(asctime)s %(message)s)',
                 datefmt = '%Y-%m-%d %H:%M:%S')
-                
-                
+
+def get_available_parsers():
+	return "@".join(AVAILABLE_PARSERS)
+
 class CortextServer(BaseHTTPRequestHandler):
 	def do_GET(self):
-			#here we should send back the available parsers
-			self.send_response(200)
-			self.end_headers()
+			try:
+				#here we should send back the available parsers
+				self.send_response(200, get_available_parsers())
+			except:
+				logging.error("Error in initiating protocol")
+				self.send_response(404)
+			finally:
+				self.end_headers()
+			
 	def do_POST(self):
-			content_length = int(self.headers['Content-Length'])
-			received_data = self.rfile.read(content_length)
-			print(f"Serv - do_Post - {received_data}")
-			self.send_response(200)
-			self.end_headers()
+			try:
+				content_length = int(self.headers['Content-Length'])
+				received_data = self.rfile.read(content_length)
+				print(f"Serv - do_Post - {received_data}")
+				self.send_response(200)
+			except:
+				logging.error("Error in receiving data in server")
+				self.send_response(404)
+			finally:
+				self.end_headers()
 
 #def handle_connection(connection):
 #    logging.info('Connection handeled')
@@ -51,7 +66,11 @@ class CortextServer(BaseHTTPRequestHandler):
 #        executor.submit(handle_connection,connection)
 
 #TODO:bad practice, consider puting them as default args (Server and the serverClass)
-def http_run_server(host, port):
+def run_server(host, port):
+	'''The protocol is an HTTP protocol between the server and his clinets.
+	client first sends Get request. server responds with a Get response (if successful)
+	with available parsers names seperated by '@'. the client then sends the data ''' #TODO: data?
+	print('yes')
 	address = (host, int(port))
 	httpd = HTTPServer(address, CortextServer)
 	logging.info('Starting Context Server.')
@@ -68,5 +87,5 @@ if __name__ == '__main__':
     print(host,port,type(host),type(port),"xx")
     dummy = 1
     #run_server(host,int(port), dummy)
-    http_run_server(host, int(port))
+    run_server(host, int(port))
 

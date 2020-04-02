@@ -1,6 +1,7 @@
 import click
 import thought_server
 
+print('inside __main__ of cortes')
 @click.group()
 def main():
     pass
