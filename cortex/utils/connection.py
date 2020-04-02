@@ -28,7 +28,8 @@ class Connection:
 
     @classmethod
     def connect(cls, host, port):
-        print(host, port)
+        '''this class method opens a socket to the specifide host and port,
+            and returns a Connection object'''
         s = socket.socket()
         s.connect((host,port))
         return Connection(s)
