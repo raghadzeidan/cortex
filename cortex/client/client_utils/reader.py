@@ -1,68 +1,108 @@
 from cortex_pb2 import 	User, Snapshot, Pose, ColorImage, DepthImage, Feelings
 from PIL import Image
+import gzip
+import logging
 import datetime as dt
-TIMESTAMP_SIZE = 8
+from furl import furl
+
 INT_SIZE = 4
-CHAR_SIZE = 1
-COORDINATE_SIZE = 8
-BGR_SIZE = 3
-FLOAT_SIZE = 4
+
 GENDERS_RMAP = {User.Gender.FEMALE:'f',User.Gender.MALE:'m', User.Gender.OTHER:'o'}
+UNCOMPRESSED = 'uncompressed'
+COMPRESSORS = {'gzip': gzip, 'uncompressed':'uncompressed'}
 
-def read_user_information(fd):
-	'''receives file descriptor, and reads user information from it
-	wraps it in a User object that was extracted
-	from .protobuf file'''
-	
-	length_byte = fd.read(INT_SIZE)
-	user_info_length = int.from_bytes(length_byte, byteorder='little')
-	user_bytes_string = fd.read(user_info_length)
-	user = User()
-	user.ParseFromString(user_bytes_string)
-	return user
-	
 
+class ProtoReaderDriver:
+	
+	def __init__(self, fd):
+		self.fd = fd
+		self.current_snapshot_length_b = b''
+	
+	def read_user_information(self):
+		length_byte = self.fd.read(INT_SIZE)
+		user_info_length = int.from_bytes(length_byte, byteorder='little')
+		user_bytes_string = self.fd.read(user_info_length)
+		user = User()
+		user.ParseFromString(user_bytes_string)
+		return user
+		
+	def read_next_snapshot(self):
+		''' reads next snapshot, by reading a uint32_t determining length of next snapshot
+		and then reading that many bytes and putting it in a snapshot object that was pre-defined
+		in a proto_file'''
+		snapshot_length = int.from_bytes(self.current_snapshot_length_b, byteorder="little")
+		buff = self.fd.read(snapshot_length) #TODO: consider taking less bytes at once
+		snapshot = Snapshot()
+		snapshot.ParseFromString(buff)
+		return snapshot
+	def next_snapshot_exists(self):
+		'''this function returns True if there exists another snapshot to read, while at the same
+		time putting in the instance field that length in bytes (after reading it), if not
+		it returns False. implemented this way cause of proto-buf/format of file '''
+		self.current_snapshot_length_b = self.fd.read(INT_SIZE)
+		if len(self.current_snapshot_length_b)==0: #length of next read token means EOF.
+			return False
+		return True
+		
+
+READER_DRIVERS = {'protobuf': ProtoReaderDriver}
+
+def find_compressor(furl_object):
+    '''returns the compressed file format is supported. returns None if not supported'''
+    comp_kind = furl_object.args['compressor']
+    if comp_kind in COMPRESSORS:
+        return COMPRESSORS[comp_kind]
+    logging.error('invalid URL - Reader')
+    raise ValueError(f'invalid URL: Unsupported file compression file {comp_kind}')
+
+def find_reader_driver(furl_object):
+    driver = furl_object.scheme
+    if driver in READER_DRIVERS:
+        return READER_DRIVERS[driver]
+    logging.error('invalid URL - Reader')
+    raise ValueError(f'invalid URL: Unsupported reading file format {driver}')
+    
 class Reader:
-	'''Class Reader, reads through a sample and is convenient.
-	no need to open or close file after reading. default format is protobuf.
-	allows different compression formats as long as it has an appropriate open method
-	support command-line-interface functionality.'''
+	'''this class defined an abstraction to a Reader reading a file.
+	it supports differnet compression formats, as well as different sample formats
+	Usage:
+		Reader object is initiated with a URL like: 'SCHEME://PATH/?compressor=COMP'
+		SCHEME being the sample format, example: Protobuf
+		PATH being the path to the sample format
+		COMP being the compression format of the file, example : gzip or uncompressed (for non-compressed files)
+		
+	to add another sample parsing foramt (SCHEME), you have to implement read_user_information, read_next_snapshot and
+	next_snapshot_exists() functions. object needs to be initiated by opened file-descriptor
 	
-	def open_file(self, compress):
-		if compress == gzip:
-			self.fd = gzip.open(self.path, "rb")
-		elif compress == None:
+	to add another compression format (COMP), you have to implement a decompressing object, that implements
+	open and close function. open fucking allowing to read byte-by-bye '''
+	
+	def open_file(self):
+		if self.compressor == UNCOMPRESSED:
 			self.fd = open(self.path, "rb")
 		else:
-			logging.error("Unsupported compressed file")
-			raise TypeError('Unsupported compressed file')
-			
+			self.fd = self.compressor.open(self.path, "rb")
+	
 	def close_file(self):
 		self.fd.close()
 		
-	def __init__(self, path, compress=None, frmt="proto"):
-		self.path = path
-		self.open_file(compress)
-		if frmt == "proto":
-			self.proto_init_metadata()
-		else:
-			logging.error("Reading format not supported")
-			raise TypeError("Reading format not supported")
+	def __init__(self, url):
+		ffurl = furl(url) 
+		self.compressor = find_compressor(ffurl)
+		self.path = str(ffurl.path)[:-1] #TODO, path in furl path has extra / at the end
+		self.open_file() #can open path now, after extracting compression-type and file path
+		
+		self.reader_driver = find_reader_driver(ffurl)(self.fd) #initiating reader_driver with our file-descriptor
+		self.init_metadata()
 			
-	def proto_init_metadata(self):
-		self.user = read_user_information(self.fd)
+	def init_metadata(self):
+		self.user = self.reader_driver.read_user_information()
 		self.user_id = self.user.user_id
 		self.username = self.user.username
 		self.birthday = self.user.birthday
 		self.gender = GENDERS_RMAP[self.user.gender] #self.gender is a single character
 		
 	def __iter__(self):
-		while True:
-			snapshot_length_b = self.fd.read(INT_SIZE)
-			if snapshot_length_b == b'':
-				break
-			snapshot_length = int.from_bytes(snapshot_length_b, byteorder="little")
-			buff = fd.read(snapshot_length) #TODO: consider taking less bytes at once
-			snapshot = Snapshot()
-			snapshot.ParseFromString(buff)
-			yield snapshot
+		while self.reader_driver.next_snapshot_exists()==True:
+			yield self.reader_driver.read_next_snapshot()
+		self.close_file()

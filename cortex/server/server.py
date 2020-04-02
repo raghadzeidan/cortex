@@ -7,11 +7,9 @@ import concurrent.futures as cf
 import pika
 #from parsers_utils.mq import channel
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from ..parsers import parse_that_fucking_image
+from ..parsers import AVAILABLE_PARSERS
 HREADS_NUMBER = 5
 METADATA_LENGTH = 20
-AVAILABLE_PARSERS=set()
-
 logging.basicConfig(level = logging.DEBUG, 
                 filename = '.logs.txt',
                 format = '%(levelname).1s %(asctime)s %(message)s)',
@@ -24,7 +22,7 @@ class CortextServer(BaseHTTPRequestHandler):
 	def do_GET(self):
 			try:
 				#here we should send back the available parsers
-				self.send_response(200, get_available_parsers())
+				self.send_response(200, "Supbro" + get_available_parsers())
 			except:
 				logging.error("Error in initiating protocol")
 				self.send_response(404)

@@ -27,9 +27,9 @@ def convert_proto_format():
 
 def upload_sample(host, port, path):
 	#reader = Reader(path)
-	url = "http://" + host + ":" + port
-	r = requests.get(url, data=path)
-	print(r.reason)
+    url = "http://" + host + ":" + str(port)
+    r = requests.get(url, data=path)
+    print(r.reason)
 
 if __name__ == '__main__':
     argv = sys.argv

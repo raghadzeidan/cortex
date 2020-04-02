@@ -1,11 +1,18 @@
 from .server import run_server
 import click
+
 @click.group()
-def main():
+def cli():
     pass
 
-@main.command('run-server')
-@click.argument('host') # help='the first arguemnt should be the address, consisting of an IP address and a port seperated by a \':\'')
-@click.argument('port') # help = 'this should be the user\'s ID')
-def main_run_server(host, port):
+@cli.command('run-server')
+@click.option('-h', '--host', default='127.0.0.1', help="this should specify the host address in which to run the server on") 
+@click.option('-p', '--port', default=8000, help="this should specify the port number on which to run the server on")
+@click.argument('db')
+def cli_run_server(host, port,db):
+    print(db)
     run_server(host, port)
+
+
+
+cli()
