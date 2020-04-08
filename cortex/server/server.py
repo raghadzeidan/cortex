@@ -3,6 +3,7 @@ import sys
 import os
 import json
 import logging
+import time
 import random
 from blessings import Terminal
 from google.protobuf.json_format import MessageToDict
@@ -77,20 +78,20 @@ class JsonPrepareDriver():
 		color_img_dict['height']=snapshot.color_image.height
 		color_img_dict['data_path'] = unique_img_path
 		to_publish['color_image'] = color_img_dict
-		print(term.green_on_black(f'Server Sending data {COUNTER} to Parsers...'))
+		#print(term.green_on_black(f'Server Sending data {COUNTER} to Parsers...'))
 		COUNTER = COUNTER + 1
-		return json.dumps(to_publish)
-		
+		#return json.dumps(to_publish)
+		return 'YES'
 
 default_prepare_driver = JsonPrepareDriver()
 
 class CortextServer(BaseHTTPRequestHandler):
 	#prepare_driver = DEFAULT_PREPARE_DRIVER()
 	def get_unique_biscuit(self, user_id):
-		random8 = random.randint(10000000,99999999) if user_id not in USER_BISCUITS  else USER_BISCUITS[user_id]
-		#print(random8)
+		if user_id in USER_BISCUITS:
+			return USER_BISCUITS[user_id]
+		random8 = random.randint(10000000,99999999)
 		user_biscuit = f'{user_id}{random8}' #guarantees uniqueness
-		#print(term.yellow_on_white(user_biscuit))
 		return user_biscuit
 	def do_GET(self):
 			try:
@@ -119,17 +120,20 @@ class CortextServer(BaseHTTPRequestHandler):
 					content_length = int(self.headers['Content-Length'])
 					received_data = self.rfile.read(content_length)
 					self.send_response(200)
-					snapshot = TheSnapshot()
-					snapshot.ParseFromString(received_data)
-					test = default_prepare_driver.prepare_to_publish(current_biscuit, snapshot)					
-					channel.exchange_declare(exchange='parsers', exchange_type='fanout')
-					channel.basic_publish(exchange='parsers', routing_key='', body=test)
+					#snapshot = TheSnapshot()
+					#snapshot.ParseFromString(received_data)
+					#test = default_prepare_driver.prepare_to_publish(current_biscuit, snapshot)					
+					print(term.green_on_black('Server sleeping for 5 seconds before printing data'))
+					time.sleep(5)
+					print(received_data)
+					#channel.exchange_declare(exchange='parsers', exchange_type='fanout')
+					#channel.basic_publish(exchange='parsers', routing_key='', body=test)
 				else:
 					print(term.red_on_white('Bad server URL'))
-					raise TypeError
+					raise TypeError('self.path')
 			except Exception as e:
 				logging.error("Error in receiving data in server")
-				print(e.trace)
+				print(term.red(str(e)))
 				self.send_response(404)
 			finally:
 				self.end_headers()
