@@ -5,6 +5,7 @@ import json
 import logging
 import time
 import random
+import flask
 from blessings import Terminal
 from google.protobuf.json_format import MessageToDict
 #import utils.render as render
@@ -13,6 +14,7 @@ from google.protobuf.json_format import MessageToDict
 import concurrent.futures as cf
 #import pika
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from socketserver import ThreadingMixIn
 from ..parsers import AVAILABLE_PARSERS
 from .server_utils import TheUser, TheSnapshot
 #from .server_utils import JsonPrepareDriver
@@ -139,6 +141,10 @@ class CortextServer(BaseHTTPRequestHandler):
 				self.end_headers()
 
 
+class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
+    """Handle requests in a separate thread."""
+    pass
+    
 #TODO:bad practice, consider puting them as default args (Server and the serverClass)
 def run_server(host, port):
 	'''The protocol is an HTTP protocol between the server and his clinets.
@@ -151,7 +157,7 @@ def run_server(host, port):
 		this is just for security measure,  to prevent from 3rd parites to simply do a POST user_id/snapshot with a specific user_id
 		biscuit are saved in a simple dictionary at server's end.''' 
 	address = (host, int(port))
-	httpd = HTTPServer(address, CortextServer)
+	httpd = ThreadedHTTPServer(address, CortextServer)
 	logging.info('Starting Context Server.')
 	try:
 		httpd.serve_forever()
