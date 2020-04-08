@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-message User {
+message TheUser {
     enum Gender {
         MALE = 0;
         FEMALE = 1;
@@ -12,43 +12,43 @@ message User {
     Gender gender = 4;
 }
 
-message Snapshot {
+message TheSnapshot {
     uint64 datetime = 1;
-    Pose pose = 2;
-    ColorImage color_image = 3;
-    DepthImage depth_image = 4;
-    Feelings feelings = 5;
+    ThePose pose = 2;
+    TheColorImage color_image = 3;
+    TheDepthImage depth_image = 4;
+    TheFeelings feelings = 5;
 }
 
-message Pose {
-    message Translation {
+message ThePose {
+    message TheTranslation {
         double x = 1;
         double y = 2;
         double z = 3;
     }
-    message Rotation {
+    message TheRotation {
         double x = 1;
         double y = 2;
         double z = 3;
         double w = 4;
     }
-    Translation translation = 1;
-    Rotation rotation = 2;
+    TheTranslation translation = 1;
+    TheRotation rotation = 2;
 }
 
-message ColorImage {
+message TheColorImage {
     uint32 width = 1;
     uint32 height = 2;
     bytes data = 3;
 }
 
-message DepthImage {
+message TheDepthImage {
     uint32 width = 1;
     uint32 height = 2;
     repeated float data = 3;
 }
 
-message Feelings {
+message TheFeelings {
     float hunger = 1;
     float thirst = 2;
     float exhaustion = 3;

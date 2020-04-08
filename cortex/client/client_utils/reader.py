@@ -1,4 +1,4 @@
-from cortex_pb2 import 	User, Snapshot, Pose, ColorImage, DepthImage, Feelings
+from .cortex_pb2 import 	User, Snapshot, Pose, ColorImage, DepthImage, Feelings
 from PIL import Image
 import gzip
 import logging
@@ -93,14 +93,11 @@ class Reader:
 		self.open_file() #can open path now, after extracting compression-type and file path
 		
 		self.reader_driver = find_reader_driver(ffurl)(self.fd) #initiating reader_driver with our file-descriptor
-		self.init_metadata()
-			
-	def init_metadata(self):
 		self.user = self.reader_driver.read_user_information()
-		self.user_id = self.user.user_id
-		self.username = self.user.username
-		self.birthday = self.user.birthday
-		self.gender = GENDERS_RMAP[self.user.gender] #self.gender is a single character
+		
+	@property
+	def user_id(self):
+		return self.user.user_id
 		
 	def __iter__(self):
 		while self.reader_driver.next_snapshot_exists()==True:

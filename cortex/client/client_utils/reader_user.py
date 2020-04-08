@@ -23,9 +23,9 @@ def read_shit():
 	path = "/home/user/Desktop/sample.mind.gz/"
 	url = "protobuf://" + path + "?compressor=gzip"
 	red = Reader(url)
-	print(red.user_id, red.username)
-	for snapshot in red:
-		print(snapshot.datetime)
+	#print(red.user_id, red.username)
+	print(red.user)
+	#print(type(red.user.SerializeToString()))
 	
 	
 	
