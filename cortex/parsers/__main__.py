@@ -1,9 +1,37 @@
-from .color_image_parser import parse_that_fucking_image
+from .color_image_parser import color_image_parser_main
+from .feelings_parser import feelings_parser_main
+from .parsers_main import run_parser
 import click
 
-@click.command('parse_image')
-@click.argument('image') # help='the first arguemnt should be the address, consisting of an IP address and a port seperated by a \':\'')
-def main_parse_image(image):
-    parse_that_fucking_image(image)
+@click.group()
+def cli():
+    pass
 
-print("hi")
+#@cli.command('parse')
+#@click.argument('parser_name', help = 'this should have the parser name that we want to parse this specific data using')
+#@click.argument('data', 'this should have the data that we want to parse')
+#@click.option('redirect', 'this is optional, if you want to redirect the data to a specific file')
+#def parse(parser_name, data_path, redirect=None):#this shit is temporaray, this should call to other function defined in main parser function in parser package
+#	pass
+#    with open(data_path,'r') as f:
+#		data = run_parser(f.read())
+#	if redirect:
+#		with open(redirect, 'w') as f:
+#			f.write(data)
+#	else:
+#		print(data)
+
+@cli.command('run-parser')
+@click.argument('parser_name')#,help='this should have the parser name that we want to parse this specific data using')
+@click.argument('mq')
+def micro_server_run_parser(parser_name, mq):#this shit is temporaray, this should call to other function defined in main parser function in parser package
+	print(mq)
+	print(parser_name)
+	if parser_name == 'feelings':
+		feelings_parser_main(mq)
+	if parser_name == 'color_image':
+		color_image_parser_main(mq)
+		
+
+
+cli()
