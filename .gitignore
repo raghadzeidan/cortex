@@ -2,3 +2,4 @@
 .pytest_chache/
 docs/build/
 .TODOs.txt
+.client_logs.txt
