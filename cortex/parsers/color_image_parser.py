@@ -16,6 +16,8 @@ def color_image_parser_callback(channel, method, properties, body):
 	#consider making them one code
 	#extracting..
 	dic = json.loads(body)
+	with open('/home/user/Desktop/volume/color_img.txt','w') as f:
+		f.write(str(dic['color_image']) + '\n')
 	parse_that_fucking_image(dic['color_image'])
 
 def color_image_parser_main(mq):#Consider the initialization to be one-for-all

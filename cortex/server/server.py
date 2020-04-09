@@ -36,7 +36,6 @@ def get_available_parsers():
 def biscuit_url(path):
 	'''returns biscuit from URL, NONE if not legal URL '''
 	parsed = path.split('/')
-	#print("PARSED",parsed,"LENG",len(parsed))
 	if len(parsed) != 4:
 		print('Bad client request')
 		return None
@@ -52,41 +51,101 @@ def biscuit_url(path):
 		return None
 	return user_biscuit
 
+def check_bad_parser_error(parser_name):
+	if parser_name not in AVAILABLE_PARSERS:
+		print(term.red(f"Tried to send data of unsupported parser: {parser_name}"))
+		raise TypeError
+
 class JsonPrepareDriver():
 	'''This class takes a snapshot and prepares its format from the client-server format
 	(project-chosen protocol which is protobuf) and prepares it as a json format before 
 	sending it through mq '''
-	def prepare_to_publish(self, biscuit, snapshot):
+	
+	def __init__(self, biscuit, snapshot_data):
+		'''using our unique biscuit, we extract user data.
+		PROJECT: here we only use the client-server-protocol biscuit to extract the user
+		data previously saved in the POST /hello of the user. couldn't find any way not to
+		create a small relation between the protocol and the driver (the biscuit is the relation)'''
+		self.snapshot = TheSnapshot()
+		snapshot.ParseFromString(snapshot_data)
+		self.biscuit = biscuit
+		self.user = TheUser()
+		user_data = USERS_INFO[biscuit]
+		self.user.ParseFromString(user_data)
+		self.volume_path = '/home/user/Desktop/volume'
+		
+	def prepare_to_publish(self, biscuit):
+		'''this is the main function of the driver. it takes the client-server protocol format 
+		and prepares it to json format before sending to mq. '''
 		global COUNTER
 		to_publish = {}
+		self.prepare_user_info(to_publish)	
+		self.prepare_feelings(to_publish)
+		self.prepare_color_image(to_publish)
+		self.prepare_pose(to_publish)
+		self.prepare_depth_image(to_publish)
 		
-		user = USERS_INFO[biscuit]
-		volume_path = '/home/user/Desktop/volume'
+		print(term.green_on_black(f'Server Sending data {COUNTER} to Parsers...'))
+		COUNTER = COUNTER + 1
+		return json.dumps(to_publish)
 		
-		user_gender = GENDER_MAP[user.gender] #gets single character
-		user_dict = MessageToDict(user)
+	def prepare_user_info(self, to_publish):
+		user_gender = GENDER_MAP[self.user.gender] #gets single character
+		user_dict = MessageToDict(self.user)
 		user_dict['gender'] = user_gender
 		to_publish['user_info']=user_dict
 		
+	def prepare_feelings(self, to_publish):
+		check_bad_parser_error('feelings')
+		feelings_dict = MessageToDict(self.snapshot.feelings)
+		to_publish['feelings'] = feelings_dict
 		
-		feelings_dict = MessageToDict(snapshot.feelings)
-		to_publish['feelings']=feelings_dict
-		
-		unique_img_path = f'{volume_path}/{biscuit}'
+	def prepare_color_image(self, to_publish):
+		'''saves color_image bytes in VOLUME/UDER_ID/DATETIME/color_image_data '''
+		print(term.green_on_black(f'DEBUG RAGHD: datetime: {self.snapshot.datetime}'))
+		datetime = self.snapshot.datetime
+		path_suffix = f'/{self.user.user_id}/{datetime}/color_image_data'
+		unique_img_path = self.volume_path + path_suffix
 		with open(unique_img_path, 'wb') as f:
 			f.write(snapshot.color_image.data)
 		color_img_dict = {}
-		color_img_dict['width']=snapshot.color_image.width
-		color_img_dict['height']=snapshot.color_image.height
+		color_img_dict['width']=self.snapshot.color_image.width
+		color_img_dict['height']=self.snapshot.color_image.height
 		color_img_dict['data_path'] = unique_img_path
 		to_publish['color_image'] = color_img_dict
-		#print(term.green_on_black(f'Server Sending data {COUNTER} to Parsers...'))
-		COUNTER = COUNTER + 1
-		#return json.dumps(to_publish)
-		return 'YES'
+		
+	def prepare_pose(self, to_publish):
+		translation_dict = MessageToDict(self.snapshot.pose.translation)
+		rotation_dict = MessageToDict(self.snapshot.pose.rotation)
+		pose_dict = {}
+		pose_dict['translation'] = translation_dict
+		pose_dict['rotation'] = rotation_dict
+		to_publish['pose'] = pose_dict
+	
+	def prepare_depth_image(self, to_publish):
+		'''saves color_image bytes in VOLUME/UDER_ID/DATETIME/depth_image_data '''
+		datetime = self.snapshot.datetime
+		path_suffix = f'/{self.user.user_id}/{datetime}/depth_image_data'
+		unique_depth_path = self.volume_path + path_suffix
+		with open(unique_depth_path, 'wb') as f:
+			f.write(snapshot.depth_image.data)
+		depth_img_dict = {}
+		depth_img_dict['width'] = self.snapshot.depth_image.width
+		depth_img_dict['height'] = self.snapshot.depth_image.height
+		depth_img_dict['data_path'] = unique_depth_path
+		to_publish['depth_image'] = depth_img_dict
+		
+	@staticmethod
+	def get_user_id(user_data):
+		user = TheUser()
+		user.ParseFromString(user_data)
+		return user.user_id
+		
+		
+		
+DEFAULT_DRIVER = JsonPrepareDriver
 
-default_prepare_driver = JsonPrepareDriver()
-
+	
 class CortextServer(BaseHTTPRequestHandler):
 	#prepare_driver = DEFAULT_PREPARE_DRIVER()
 	def get_unique_biscuit(self, user_id):
@@ -95,6 +154,7 @@ class CortextServer(BaseHTTPRequestHandler):
 		random8 = random.randint(10000000,99999999)
 		user_biscuit = f'{user_id}{random8}' #guarantees uniqueness
 		return user_biscuit
+		
 	def do_GET(self):
 			try:
 				self.send_response(200, get_available_parsers())
@@ -109,30 +169,24 @@ class CortextServer(BaseHTTPRequestHandler):
 				print(self.path)
 				if self.path == '/hello':
 					content_length = int(self.headers['Content-Length'])
-					received_data = self.rfile.read(content_length)
-					user = TheUser()
-					user.ParseFromString(received_data)
-					#print(type(user.gender))
-					#print(term.red_on_white(str(user) + "TYPE:" + type(user) + "GENDER" + str(user.gender)))
-					user_biscuit = self.get_unique_biscuit(user.user_id)
+					user_data = self.rfile.read(content_length)
+					user_id = DEFAULT_DRIVER.get_user_id(user_data) #we need actual user ID.
+					user_biscuit = self.get_unique_biscuit(user_id)
 					USER_BISCUITS[user.user_id] = user_biscuit
-					USERS_INFO[user_biscuit] = user #saves user informationwith relevant biscuit
+					USERS_INFO[user_biscuit] = user_data 
 					self.send_response(200, user_biscuit)
+					
 				elif (current_biscuit := biscuit_url(self.path)) is not None:
 					content_length = int(self.headers['Content-Length'])
-					received_data = self.rfile.read(content_length)
+					snapshot_data = self.rfile.read(content_length)
 					self.send_response(200)
-					#snapshot = TheSnapshot()
-					#snapshot.ParseFromString(received_data)
-					#test = default_prepare_driver.prepare_to_publish(current_biscuit, snapshot)					
-					print(term.green_on_black('Server sleeping for 5 seconds before printing data'))
-					time.sleep(5)
-					print(received_data)
-					#channel.exchange_declare(exchange='parsers', exchange_type='fanout')
-					#channel.basic_publish(exchange='parsers', routing_key='', body=test)
+					driver = DEFAULT_DRIVER(current_biscuit, snapshot_data)	
+					test = driver.prepare_to_publish()					
+					channel.exchange_declare(exchange='parsers', exchange_type='fanout')
+					channel.basic_publish(exchange='parsers', routing_key='', body=test)
 				else:
 					print(term.red_on_white('Bad server URL'))
-					raise TypeError('self.path')
+					raise TypeError(self.path)
 			except Exception as e:
 				logging.error("Error in receiving data in server")
 				print(term.red(str(e)))

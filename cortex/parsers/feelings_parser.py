@@ -17,6 +17,8 @@ def feelings_parser_callback(channel, method, properties, body):
 	#consider making them one code
 	#extracting..
 	dic = json.loads(body)
+	with open('/home/user/Desktop/volume/feelings_input.txt','w') as f:
+		f.write(str(dic['feelings']) + '\n')
 	parse_those_fucking_feelings(dic['feelings'])
 	
     
