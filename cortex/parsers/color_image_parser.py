@@ -1,5 +1,6 @@
 from .parsers_main import subscribe
 import pika
+from PIL import Image
 import json
 import blessings
 term = blessings.Terminal()
@@ -7,18 +8,40 @@ term = blessings.Terminal()
 
 @subscribe('color_image')
 def parse_that_fucking_image(data):
-    print(term.cyan(f'PARSER 1 RECIEVED: {data}'))
+	dic = json.loads(data)
+	print(term.red_on_white(str(dic)))
+	color_image_publish = {}
+	color_image_publish['user'] = dic['user']
+	color_image_publish['datetime'] = dic['datetime']
+	#processing of color_image
+	image_bytes_path = dic['color_image']['data_path']
+	width, height = dic['color_image']['width'], dic['color_image']['height']
+	with open(image_bytes_path, 'rb') as f:
+		print(term.green_on_black(f'Opened path {image_bytes_path}'))
+		image_bytes = f.read()
+	print(term.green_on_black(f'width:{width} - heigh:{height}'))
+	image = Image.new('RGB', (width, height))
+	print(image.__dict__)
+	print(term.green_on_black(f'type: {type(image_bytes)}, length: {len(image_bytes)}'))
+	#print(image_bytes)
+	image.putdata(image_bytes)
+	user_id = dic['user']['user_id']
+	datetime = dic['datetime']
+	save_path = f'/home/user/Desktop/volume/color_images/images/{user_id}_{datetime}.png'
+	image.save(save_path)
+	print(term.green_on_black(f'Saved image on path {save_path}'))
+	color_image_publish['path'] = save_path
+	return color_image_publish
+		
+    
 
 def color_image_parser_callback(channel, method, properties, body):
 	'''a callback for the parsing feelings function.
 	PROJECT: this allows decoupiling between MQ and actual parsing function'''
-	#extracting from user+snapshot (just like run_parser)
-	#consider making them one code
-	#extracting..
-	dic = json.loads(body)
-	with open('/home/user/Desktop/volume/color_img.txt','w') as f:
-		f.write(str(dic['color_image']) + '\n')
-	parse_that_fucking_image(dic['color_image'])
+	
+	to_publish=parse_that_fucking_image(body)
+	channel.exchange_declare('color_image', exchange_type='fanout')
+	channel.basic_publish(exchange='color_image', routing_key='', body=to_publish)
 
 def color_image_parser_main(mq):#Consider the initialization to be one-for-all
 	print(mq)

@@ -73,10 +73,13 @@ def upload_sample(host, port, path, client_context = project_client_should_send)
 	client_biscuit = r.reason
 	print(term.yellow_on_black(f'Client\'s unique biscuit: {client_biscuit}'))
 	client_biscuit_snapshot_url = f'{server_url}/{reader.user_id}/{client_biscuit}/snapshot'
+	cnt = 0
 	for snapshot in reader:
 		print(term.yellow_on_black('Sleeping for 5 seconds before sending next snapshot.'))
 		time.sleep(5) #TODO check type of sent stuff
-		requests.post(client_biscuit_snapshot_url, data = proto_prepare_snapshot_for_takeoff(snapshot))
+		if cnt >= 0:
+			requests.post(client_biscuit_snapshot_url, data = proto_prepare_snapshot_for_takeoff(snapshot))
+		cnt = cnt + 1
 	print(r.text)
 
 if __name__ == '__main__':

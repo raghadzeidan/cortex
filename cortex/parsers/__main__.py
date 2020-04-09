@@ -1,5 +1,7 @@
 from .color_image_parser import color_image_parser_main
 from .feelings_parser import feelings_parser_main
+from .pose_parser import pose_parser_main
+from .depth_image_parser import depth_image_parser_main
 from .parsers_main import run_parser
 import click
 
@@ -29,8 +31,14 @@ def micro_server_run_parser(parser_name, mq):#this shit is temporaray, this shou
 	print(parser_name)
 	if parser_name == 'feelings':
 		feelings_parser_main(mq)
-	if parser_name == 'color_image':
+	elif parser_name == 'color_image':
 		color_image_parser_main(mq)
+	elif parser_name == 'depth_image':
+		depth_image_parser_main(mq)
+	elif parser_name == 'pose':
+		pose_parser_main(mq)
+	else:
+		raise TypeError('Unsuppored/invalid parser name')
 		
 
 

@@ -5,14 +5,13 @@ import json
 import logging
 import time
 import random
-import flask
+import traceback
 from blessings import Terminal
 from google.protobuf.json_format import MessageToDict
+import numpy as np
 #import utils.render as render
 #from utils import Connection, Listener
 #from thought import Thought, render_from_bytes
-import concurrent.futures as cf
-#import pika
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from socketserver import ThreadingMixIn
 from ..parsers import AVAILABLE_PARSERS
@@ -67,19 +66,20 @@ class JsonPrepareDriver():
 		data previously saved in the POST /hello of the user. couldn't find any way not to
 		create a small relation between the protocol and the driver (the biscuit is the relation)'''
 		self.snapshot = TheSnapshot()
-		snapshot.ParseFromString(snapshot_data)
+		self.snapshot.ParseFromString(snapshot_data)
 		self.biscuit = biscuit
 		self.user = TheUser()
 		user_data = USERS_INFO[biscuit]
 		self.user.ParseFromString(user_data)
 		self.volume_path = '/home/user/Desktop/volume'
 		
-	def prepare_to_publish(self, biscuit):
+	def prepare_to_publish(self):
 		'''this is the main function of the driver. it takes the client-server protocol format 
 		and prepares it to json format before sending to mq. '''
 		global COUNTER
 		to_publish = {}
-		self.prepare_user_info(to_publish)	
+		self.prepare_user_info(to_publish)
+		to_publish['datetime'] = self.snapshot.datetime #uint_64	
 		self.prepare_feelings(to_publish)
 		self.prepare_color_image(to_publish)
 		self.prepare_pose(to_publish)
@@ -93,7 +93,8 @@ class JsonPrepareDriver():
 		user_gender = GENDER_MAP[self.user.gender] #gets single character
 		user_dict = MessageToDict(self.user)
 		user_dict['gender'] = user_gender
-		to_publish['user_info']=user_dict
+		to_publish['user']=user_dict
+		print('xxxxxxxxxxxxxxxxxxxxx'+str(user_dict))
 		
 	def prepare_feelings(self, to_publish):
 		check_bad_parser_error('feelings')
@@ -104,10 +105,11 @@ class JsonPrepareDriver():
 		'''saves color_image bytes in VOLUME/UDER_ID/DATETIME/color_image_data '''
 		print(term.green_on_black(f'DEBUG RAGHD: datetime: {self.snapshot.datetime}'))
 		datetime = self.snapshot.datetime
-		path_suffix = f'/{self.user.user_id}/{datetime}/color_image_data'
+		path_suffix = f'/color_images/bytes/{self.user.user_id}_{datetime}'
 		unique_img_path = self.volume_path + path_suffix
 		with open(unique_img_path, 'wb') as f:
-			f.write(snapshot.color_image.data)
+			print(term.green_on_white(f'type: {type(self.snapshot.color_image.data)}, length: {len(self.snapshot.color_image.data)}'))
+			f.write(self.snapshot.color_image.data)
 		color_img_dict = {}
 		color_img_dict['width']=self.snapshot.color_image.width
 		color_img_dict['height']=self.snapshot.color_image.height
@@ -125,10 +127,14 @@ class JsonPrepareDriver():
 	def prepare_depth_image(self, to_publish):
 		'''saves color_image bytes in VOLUME/UDER_ID/DATETIME/depth_image_data '''
 		datetime = self.snapshot.datetime
-		path_suffix = f'/{self.user.user_id}/{datetime}/depth_image_data'
+		path_suffix = f'/depth_images/bytes/{self.user.user_id}_{datetime}.npy'
 		unique_depth_path = self.volume_path + path_suffix
-		with open(unique_depth_path, 'wb') as f:
-			f.write(snapshot.depth_image.data)
+		depth_dict = MessageToDict(self.snapshot.depth_image)
+		float_array = depth_dict['data']
+		#float_np_array = np.array(float_array)
+		np_array = np.reshape(float_array,(depth_dict['height'],depth_dict['width']))
+		np.save(unique_depth_path,np_array, allow_pickle=False) #saving numpy 2D array
+		
 		depth_img_dict = {}
 		depth_img_dict['width'] = self.snapshot.depth_image.width
 		depth_img_dict['height'] = self.snapshot.depth_image.height
@@ -137,9 +143,9 @@ class JsonPrepareDriver():
 		
 	@staticmethod
 	def get_user_id(user_data):
-		user = TheUser()
-		user.ParseFromString(user_data)
-		return user.user_id
+		s_user = TheUser()
+		s_user.ParseFromString(user_data)
+		return s_user.user_id
 		
 		
 		
@@ -172,7 +178,7 @@ class CortextServer(BaseHTTPRequestHandler):
 					user_data = self.rfile.read(content_length)
 					user_id = DEFAULT_DRIVER.get_user_id(user_data) #we need actual user ID.
 					user_biscuit = self.get_unique_biscuit(user_id)
-					USER_BISCUITS[user.user_id] = user_biscuit
+					USER_BISCUITS[user_id] = user_biscuit
 					USERS_INFO[user_biscuit] = user_data 
 					self.send_response(200, user_biscuit)
 					
@@ -180,8 +186,10 @@ class CortextServer(BaseHTTPRequestHandler):
 					content_length = int(self.headers['Content-Length'])
 					snapshot_data = self.rfile.read(content_length)
 					self.send_response(200)
-					driver = DEFAULT_DRIVER(current_biscuit, snapshot_data)	
-					test = driver.prepare_to_publish()					
+					driver = DEFAULT_DRIVER(current_biscuit, snapshot_data)
+						
+					test = driver.prepare_to_publish()		
+					#also needs decoupling (MQ)			
 					channel.exchange_declare(exchange='parsers', exchange_type='fanout')
 					channel.basic_publish(exchange='parsers', routing_key='', body=test)
 				else:
@@ -190,6 +198,7 @@ class CortextServer(BaseHTTPRequestHandler):
 			except Exception as e:
 				logging.error("Error in receiving data in server")
 				print(term.red(str(e)))
+				traceback.print_exc(file=sys.stdout)
 				self.send_response(404)
 			finally:
 				self.end_headers()

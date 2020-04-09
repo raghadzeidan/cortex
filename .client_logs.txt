@@ -2156,3 +2156,905 @@ D 2020-04-09 02:16:32 Starting new HTTP connection (1): 127.0.0.1:8000
 D 2020-04-09 02:16:32 http://127.0.0.1:8000 "POST /42/4252853528/snapshot HTTP/1.1" 200 None
 D 2020-04-09 02:16:37 Starting new HTTP connection (1): 127.0.0.1:8000
 D 2020-04-09 02:16:37 http://127.0.0.1:8000 "POST /42/4252853528/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:15:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:15:56 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-09 04:15:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:15:56 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 404 None
+D 2020-04-09 04:15:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:18:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:18:27 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-09 04:18:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:18:27 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-09 04:18:28 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:18:28 http://127.0.0.1:8000 "POST /42/4292076810/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:18:28 Failed to parse headers (url=http://127.0.0.1:8000/42/4292076810/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:18:28 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:18:28 GMT\r\n\r\n'
+D 2020-04-09 04:18:28 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:18:28 http://127.0.0.1:8000 "POST /42/4292076810/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:18:28 Failed to parse headers (url=http://127.0.0.1:8000/42/4292076810/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:18:28 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:18:28 GMT\r\n\r\n'
+D 2020-04-09 04:18:29 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:18:29 http://127.0.0.1:8000 "POST /42/4292076810/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:18:29 Failed to parse headers (url=http://127.0.0.1:8000/42/4292076810/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:18:29 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:18:29 GMT\r\n\r\n'
+D 2020-04-09 04:18:29 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:18:29 http://127.0.0.1:8000 "POST /42/4292076810/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:18:29 Failed to parse headers (url=http://127.0.0.1:8000/42/4292076810/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:18:29 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:18:29 GMT\r\n\r\n'
+D 2020-04-09 04:18:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:18:30 http://127.0.0.1:8000 "POST /42/4292076810/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:18:30 Failed to parse headers (url=http://127.0.0.1:8000/42/4292076810/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:18:30 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:18:30 GMT\r\n\r\n'
+D 2020-04-09 04:23:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:23:30 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-09 04:23:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:23:30 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-09 04:23:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:23:30 http://127.0.0.1:8000 "POST /42/4232902803/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:23:30 Failed to parse headers (url=http://127.0.0.1:8000/42/4232902803/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:23:30 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:23:30 GMT\r\n\r\n'
+D 2020-04-09 04:23:31 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:23:31 http://127.0.0.1:8000 "POST /42/4232902803/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:23:31 Failed to parse headers (url=http://127.0.0.1:8000/42/4232902803/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:23:31 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:23:31 GMT\r\n\r\n'
+D 2020-04-09 04:23:31 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:23:31 http://127.0.0.1:8000 "POST /42/4232902803/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:23:31 Failed to parse headers (url=http://127.0.0.1:8000/42/4232902803/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:23:31 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:23:31 GMT\r\n\r\n'
+D 2020-04-09 04:23:31 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:23:31 http://127.0.0.1:8000 "POST /42/4232902803/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:23:31 Failed to parse headers (url=http://127.0.0.1:8000/42/4232902803/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:23:31 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:23:31 GMT\r\n\r\n'
+D 2020-04-09 04:23:32 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:23:32 http://127.0.0.1:8000 "POST /42/4232902803/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:23:32 Failed to parse headers (url=http://127.0.0.1:8000/42/4232902803/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:23:32 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:23:32 GMT\r\n\r\n'
+D 2020-04-09 04:24:15 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:15 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-09 04:24:15 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:15 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-09 04:24:16 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:16 http://127.0.0.1:8000 "POST /42/4255264346/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:24:16 Failed to parse headers (url=http://127.0.0.1:8000/42/4255264346/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:16 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:16 GMT\r\n\r\n'
+D 2020-04-09 04:24:16 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:16 http://127.0.0.1:8000 "POST /42/4255264346/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:24:16 Failed to parse headers (url=http://127.0.0.1:8000/42/4255264346/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:16 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:16 GMT\r\n\r\n'
+D 2020-04-09 04:24:17 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:17 http://127.0.0.1:8000 "POST /42/4255264346/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:24:17 Failed to parse headers (url=http://127.0.0.1:8000/42/4255264346/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:17 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:17 GMT\r\n\r\n'
+D 2020-04-09 04:24:17 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:17 http://127.0.0.1:8000 "POST /42/4255264346/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:24:17 Failed to parse headers (url=http://127.0.0.1:8000/42/4255264346/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:17 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:17 GMT\r\n\r\n'
+D 2020-04-09 04:24:44 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:44 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-09 04:24:44 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:44 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-09 04:24:44 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:44 http://127.0.0.1:8000 "POST /42/4231041151/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:24:44 Failed to parse headers (url=http://127.0.0.1:8000/42/4231041151/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:44 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:44 GMT\r\n\r\n'
+D 2020-04-09 04:24:45 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:45 http://127.0.0.1:8000 "POST /42/4231041151/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:24:45 Failed to parse headers (url=http://127.0.0.1:8000/42/4231041151/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:45 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:45 GMT\r\n\r\n'
+D 2020-04-09 04:24:45 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:45 http://127.0.0.1:8000 "POST /42/4231041151/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:24:45 Failed to parse headers (url=http://127.0.0.1:8000/42/4231041151/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:45 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:45 GMT\r\n\r\n'
+D 2020-04-09 04:24:46 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:46 http://127.0.0.1:8000 "POST /42/4231041151/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:24:46 Failed to parse headers (url=http://127.0.0.1:8000/42/4231041151/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:46 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:46 GMT\r\n\r\n'
+D 2020-04-09 04:24:46 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:24:46 http://127.0.0.1:8000 "POST /42/4231041151/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:24:46 Failed to parse headers (url=http://127.0.0.1:8000/42/4231041151/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:46 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:24:46 GMT\r\n\r\n'
+D 2020-04-09 04:26:47 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:47 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-09 04:26:47 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:47 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-09 04:26:48 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:48 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:48 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:48 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:49 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:49 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:49 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:49 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:50 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:50 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:50 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:50 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:51 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:51 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:51 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:51 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:52 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:52 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:52 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:52 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:53 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:53 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:54 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:54 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:54 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:54 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:55 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:55 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:55 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:55 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:56 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:56 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:57 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:57 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:57 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:57 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:26:58 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:26:58 http://127.0.0.1:8000 "POST /42/4282128561/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:52 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:52 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-09 04:29:52 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:52 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-09 04:29:52 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:53 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:53 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:53 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:54 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:54 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:54 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:54 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:55 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:55 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:55 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:55 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:56 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:56 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:57 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:57 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:57 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:57 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:58 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:58 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:58 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:58 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:59 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:59 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:29:59 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:29:59 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:00 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:00 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:00 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:00 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:01 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:01 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:01 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:01 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:02 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:02 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:02 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:02 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:03 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:03 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:03 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:03 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:04 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:04 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:04 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:04 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:05 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:30:05 http://127.0.0.1:8000 "POST /42/4253795608/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:30:05 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:27 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-09 04:31:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:27 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-09 04:31:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:27 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:28 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:28 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:28 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:28 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:28 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:28 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-09 04:31:28 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:28 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-09 04:31:29 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:29 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:29 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:29 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:29 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:29 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:29 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:29 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:30 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:30 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:30 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:30 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:31 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:31 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:31 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:31 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:31 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:31 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:31 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:31 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:32 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:32 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:32 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:32 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:32 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:32 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:32 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:32 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:33 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:33 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:33 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:33 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:33 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:33 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:34 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:34 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:34 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:34 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:34 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:34 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:35 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:35 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:35 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:35 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:35 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:35 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:35 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:35 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:36 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:36 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:36 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+D 2020-04-09 04:31:36 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:36 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:36 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:36 GMT\r\n\r\n'
+D 2020-04-09 04:31:36 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:36 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:36 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:36 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:36 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:36 GMT\r\n\r\n'
+D 2020-04-09 04:31:36 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:36 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:36 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:36 GMT\r\n\r\n'
+D 2020-04-09 04:31:37 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:37 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:37 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:37 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:37 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:37 GMT\r\n\r\n'
+D 2020-04-09 04:31:37 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:37 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:37 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:37 GMT\r\n\r\n'
+D 2020-04-09 04:31:37 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:37 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:37 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:37 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:37 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:37 GMT\r\n\r\n'
+D 2020-04-09 04:31:37 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:37 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:37 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:37 GMT\r\n\r\n'
+D 2020-04-09 04:31:38 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:38 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:38 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:38 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:38 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:38 GMT\r\n\r\n'
+D 2020-04-09 04:31:38 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:38 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:38 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:38 GMT\r\n\r\n'
+D 2020-04-09 04:31:39 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:39 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:39 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:39 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:39 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:39 GMT\r\n\r\n'
+D 2020-04-09 04:31:39 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:39 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:39 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:39 GMT\r\n\r\n'
+D 2020-04-09 04:31:39 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:39 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:39 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:39 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:39 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:39 GMT\r\n\r\n'
+D 2020-04-09 04:31:39 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:39 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:39 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:39 GMT\r\n\r\n'
+D 2020-04-09 04:31:40 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:40 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:40 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:40 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:40 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:40 GMT\r\n\r\n'
+D 2020-04-09 04:31:40 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:40 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:40 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:40 GMT\r\n\r\n'
+D 2020-04-09 04:31:40 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:40 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:40 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:40 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:40 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:40 GMT\r\n\r\n'
+D 2020-04-09 04:31:40 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:40 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:40 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:40 GMT\r\n\r\n'
+D 2020-04-09 04:31:41 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:41 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:41 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:41 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:41 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:41 GMT\r\n\r\n'
+D 2020-04-09 04:31:41 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:41 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:41 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:41 GMT\r\n\r\n'
+D 2020-04-09 04:31:41 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:41 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:41 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:41 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:41 GMT\r\n\r\n'
+D 2020-04-09 04:31:41 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:41 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:41 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:41 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:41 GMT\r\n\r\n'
+D 2020-04-09 04:31:42 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:42 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:42 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:42 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:42 GMT\r\n\r\n'
+D 2020-04-09 04:31:42 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:42 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:42 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:42 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:42 GMT\r\n\r\n'
+D 2020-04-09 04:31:42 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-09 04:31:42 http://127.0.0.1:8000 "POST /42/4231540581/snapshot HTTP/1.1" 200 None
+W 2020-04-09 04:31:42 Failed to parse headers (url=http://127.0.0.1:8000/42/4231540581/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:42 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 01:31:42 GMT\r\n\r\n'
+D 2020-04-09 04:31:43 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:14:07 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:14:07 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:14:07 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:14:08 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:14:13 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:14:13 http://127.0.0.1:8000 "POST /42/4289384191/snapshot HTTP/1.1" 200 None
+W 2020-04-10 00:14:13 Failed to parse headers (url=http://127.0.0.1:8000/42/4289384191/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 21:14:13 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 21:14:13 GMT\r\n\r\n'
+D 2020-04-10 00:19:00 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:19:00 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:19:00 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:19:00 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:19:05 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:19:05 http://127.0.0.1:8000 "POST /42/4285562950/snapshot HTTP/1.1" 200 None
+W 2020-04-10 00:19:05 Failed to parse headers (url=http://127.0.0.1:8000/42/4285562950/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 21:19:05 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 21:19:05 GMT\r\n\r\n'
+D 2020-04-10 00:19:10 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:19:10 http://127.0.0.1:8000 "POST /42/4285562950/snapshot HTTP/1.1" 200 None
+W 2020-04-10 00:19:10 Failed to parse headers (url=http://127.0.0.1:8000/42/4285562950/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 21:19:10 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 21:19:10 GMT\r\n\r\n'
+D 2020-04-10 00:19:16 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:20:17 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:20:17 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:20:17 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:20:17 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:20:22 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:20:22 http://127.0.0.1:8000 "POST /42/4220503337/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:20:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:20:27 http://127.0.0.1:8000 "POST /42/4220503337/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:22:14 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:22:14 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:22:14 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:22:14 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:22:19 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:22:19 http://127.0.0.1:8000 "POST /42/4258846049/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:22:55 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:22:55 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:22:55 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:22:55 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:23:00 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:23:00 http://127.0.0.1:8000 "POST /42/4224518678/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:24:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:24:56 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:24:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:24:56 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:25:01 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:25:01 http://127.0.0.1:8000 "POST /42/4225273003/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:25:15 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:25:15 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:25:15 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:25:15 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:25:20 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:25:20 http://127.0.0.1:8000 "POST /42/4265672014/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:25:26 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:25:26 http://127.0.0.1:8000 "POST /42/4265672014/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:28:00 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:28:00 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:28:00 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:28:00 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:28:05 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:28:05 http://127.0.0.1:8000 "POST /42/4218921344/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:28:40 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:28:40 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:28:40 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:28:40 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:28:46 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:28:46 http://127.0.0.1:8000 "POST /42/4270780022/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:28:51 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:28:51 http://127.0.0.1:8000 "POST /42/4270780022/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:31:39 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:31:39 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:31:39 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:31:39 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:31:44 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:31:44 http://127.0.0.1:8000 "POST /42/4285397893/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:37:18 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:37:18 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:37:18 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:37:18 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:37:23 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:37:23 http://127.0.0.1:8000 "POST /42/4256038400/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:37:28 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:44:01 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:44:01 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:44:01 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:44:01 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:44:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:44:27 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:44:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:44:27 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:44:37 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:44:37 http://127.0.0.1:8000 "POST /42/4275823646/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:47:10 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:47:10 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:47:10 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:47:10 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:47:20 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:47:20 http://127.0.0.1:8000 "POST /42/4232331475/snapshot HTTP/1.1" 200 None
+D 2020-04-10 00:50:31 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:50:31 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 00:50:31 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:50:31 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 00:50:41 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 00:50:41 http://127.0.0.1:8000 "POST /42/4260963685/snapshot HTTP/1.1" 200 None
+D 2020-04-10 01:27:22 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 01:27:22 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 01:27:22 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 01:27:22 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 01:27:32 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 01:27:32 http://127.0.0.1:8000 "POST /42/4249140901/snapshot HTTP/1.1" 200 None
+W 2020-04-10 01:27:32 Failed to parse headers (url=http://127.0.0.1:8000/42/4249140901/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 22:27:32 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 22:27:32 GMT\r\n\r\n'
+D 2020-04-10 01:28:43 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 01:28:43 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 01:28:43 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 01:28:43 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 01:28:48 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 01:28:48 http://127.0.0.1:8000 "POST /42/4224745487/snapshot HTTP/1.1" 200 None
+W 2020-04-10 01:28:48 Failed to parse headers (url=http://127.0.0.1:8000/42/4224745487/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 22:28:48 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 22:28:48 GMT\r\n\r\n'
+D 2020-04-10 01:59:26 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 01:59:26 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 01:59:26 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 01:59:26 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:00:45 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:00:51 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:00:51 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:00:51 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:00:51 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:00:57 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:00:57 http://127.0.0.1:8000 "POST /42/4243289622/snapshot HTTP/1.1" 200 None
+W 2020-04-10 02:00:57 Failed to parse headers (url=http://127.0.0.1:8000/42/4243289622/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 23:00:57 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 23:00:57 GMT\r\n\r\n'
+D 2020-04-10 02:06:29 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:06:29 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:06:29 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:06:29 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:06:34 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:06:34 http://127.0.0.1:8000 "POST /42/4227852050/snapshot HTTP/1.1" 200 None
+W 2020-04-10 02:06:34 Failed to parse headers (url=http://127.0.0.1:8000/42/4227852050/snapshot): [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 23:06:34 GMT\r\n\r\n'
+Traceback (most recent call last):
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/connectionpool.py", line 441, in _make_request
+    assert_header_parsing(httplib_response.msg)
+  File "/home/user/Desktop/cortex/.env/lib/python3.8/site-packages/urllib3/util/response.py", line 71, in assert_header_parsing
+    raise HeaderParsingError(defects=defects, unparsed_data=unparsed_data)
+urllib3.exceptions.HeaderParsingError: [MissingHeaderBodySeparatorDefect()], unparsed data: 'HTTP/1.0 404 Not Found\r\nServer: BaseHTTP/0.6 Python/3.8.0\r\nDate: Thu, 09 Apr 2020 23:06:34 GMT\r\n\r\n'
+D 2020-04-10 02:07:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:07:30 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:07:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:07:30 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:07:35 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:07:35 http://127.0.0.1:8000 "POST /42/4247460198/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:13:06 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:13:06 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:13:06 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:13:06 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:13:12 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:13:12 http://127.0.0.1:8000 "POST /42/4275043910/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:13:50 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:13:50 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:13:50 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:13:50 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:13:55 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:13:55 http://127.0.0.1:8000 "POST /42/4244375350/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:15:16 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:15:16 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:15:16 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:15:16 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:15:21 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:15:22 http://127.0.0.1:8000 "POST /42/4269054526/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:15:59 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:15:59 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:15:59 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:15:59 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:16:04 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:16:04 http://127.0.0.1:8000 "POST /42/4281789917/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:16:09 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:16:09 http://127.0.0.1:8000 "POST /42/4281789917/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:16:14 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:16:14 http://127.0.0.1:8000 "POST /42/4281789917/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:16:19 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:16:20 http://127.0.0.1:8000 "POST /42/4281789917/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:16:25 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:16:25 http://127.0.0.1:8000 "POST /42/4281789917/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:16:30 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:16:30 http://127.0.0.1:8000 "POST /42/4281789917/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:16:35 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:16:35 http://127.0.0.1:8000 "POST /42/4281789917/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:16:40 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:16:40 http://127.0.0.1:8000 "POST /42/4281789917/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:16:45 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:16:45 http://127.0.0.1:8000 "POST /42/4281789917/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:18:45 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:18:45 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:18:45 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:18:45 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:18:50 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:18:50 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:18:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:18:56 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:19:01 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:19:01 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:19:06 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:19:06 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:19:11 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:19:11 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:19:16 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:19:16 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:19:21 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:19:21 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:19:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:19:27 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:19:32 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:19:32 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:19:37 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:19:37 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:19:42 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:19:42 http://127.0.0.1:8000 "POST /42/4264701672/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:34:35 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:34:35 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:34:35 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:34:35 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:34:40 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:34:40 http://127.0.0.1:8000 "POST /42/4245301179/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:34:45 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:34:45 http://127.0.0.1:8000 "POST /42/4245301179/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:34:51 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:34:51 http://127.0.0.1:8000 "POST /42/4245301179/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:34:56 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:35:22 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:35:22 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:35:22 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:35:22 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:35:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:35:27 http://127.0.0.1:8000 "POST /42/4274615014/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:35:33 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:35:33 http://127.0.0.1:8000 "POST /42/4274615014/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:35:38 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:35:38 http://127.0.0.1:8000 "POST /42/4274615014/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:37:08 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:37:08 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:37:08 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:37:08 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:37:13 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:37:13 http://127.0.0.1:8000 "POST /42/4284929402/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:37:19 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:37:19 http://127.0.0.1:8000 "POST /42/4284929402/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:39:36 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:39:36 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:39:36 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:39:36 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:39:41 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:39:42 http://127.0.0.1:8000 "POST /42/4235822030/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:39:47 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:39:47 http://127.0.0.1:8000 "POST /42/4235822030/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:39:52 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:39:52 http://127.0.0.1:8000 "POST /42/4235822030/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:39:57 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:39:57 http://127.0.0.1:8000 "POST /42/4235822030/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:40:39 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:40:39 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:40:39 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:40:39 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:40:44 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:40:44 http://127.0.0.1:8000 "POST /42/4219812630/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:40:49 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:40:49 http://127.0.0.1:8000 "POST /42/4219812630/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:43:09 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:43:09 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:43:09 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:43:09 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:43:14 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:43:14 http://127.0.0.1:8000 "POST /42/4282320099/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:43:19 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:43:19 http://127.0.0.1:8000 "POST /42/4282320099/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:43:53 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:43:53 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:43:53 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:43:53 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:43:58 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:43:58 http://127.0.0.1:8000 "POST /42/4242968365/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:44:03 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:44:04 http://127.0.0.1:8000 "POST /42/4242968365/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:44:09 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:45:22 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:45:22 http://127.0.0.1:8000 "GET /config HTTP/1.1" 200 None
+D 2020-04-10 02:45:22 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:45:22 http://127.0.0.1:8000 "POST /hello HTTP/1.1" 200 None
+D 2020-04-10 02:45:27 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:45:27 http://127.0.0.1:8000 "POST /42/4257187740/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:45:32 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:45:32 http://127.0.0.1:8000 "POST /42/4257187740/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:45:37 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:45:37 http://127.0.0.1:8000 "POST /42/4257187740/snapshot HTTP/1.1" 200 None
+D 2020-04-10 02:45:42 Starting new HTTP connection (1): 127.0.0.1:8000
+D 2020-04-10 02:45:43 http://127.0.0.1:8000 "POST /42/4257187740/snapshot HTTP/1.1" 200 None

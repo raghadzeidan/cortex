@@ -6,21 +6,22 @@ term = blessings.Terminal()
 
 @subscribe('feelings')
 def parse_those_fucking_feelings(data):
-	'''(should, needs extracting)receives user+relevant feelings (json) snapshot and works on feelings part '''
-	print(term.red(f'FEELINGS PARSER RECIEVED: \n'))
-	print(term.red_on_black(str(data)))
+	dic = json.loads(data)
+	publish_feelings = {}
+	publish_feelings['user'] = dic['user']
+	publish_feelings['datetime'] = dic['datetime']
+	publish_feelings['feelings'] = dic['feelings']
+	return json.dumps(publish_feelings)
+	
     
 def feelings_parser_callback(channel, method, properties, body):
 	'''a callback for the parsing feelings function.
 	PROJECT: this allows decoupiling between MQ and actual parsing function'''
-	#extracting from user+snapshot (just like run_parser)
-	#consider making them one code
-	#extracting..
-	dic = json.loads(body)
-	with open('/home/user/Desktop/volume/feelings_input.txt','w') as f:
-		f.write(str(dic['feelings']) + '\n')
-	parse_those_fucking_feelings(dic['feelings'])
 	
+	to_publish = parse_those_fucking_feelings(body)
+	channel.exchange_declare('feelings', exchange_type='fanout')
+	channel.basic_publish(exchange='feelings', routing_key='', body=to_publish)
+
     
     
 #print('Feelings parser consuming...')

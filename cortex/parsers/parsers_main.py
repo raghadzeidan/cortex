@@ -17,12 +17,6 @@ def run_parser(parser_name, data):
     if parser_name not in AVAILABLE_PARSERS:
         raise TypeError('parser not suppeoted')
     if parser_name == 'feelings':
-        #extracting specific feelings from data + user_feelings ofcourse
-        #extracting..
-        #extracting..
         return parse_those_fucking_feelings(data)
     if parser_name == 'color_image':
-        #extracting..
-        #...
-        #..
         return parse_that_fucking_image(data)
