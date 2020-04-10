@@ -2,6 +2,7 @@ from .parsers_main import subscribe
 import pika
 from PIL import Image
 import json
+from ..mq import MQer
 import blessings
 term = blessings.Terminal()
 
@@ -20,18 +21,21 @@ def parse_that_fucking_image(data):
 		print(term.green_on_black(f'Opened path {image_bytes_path}'))
 		image_bytes = f.read()
 	print(term.green_on_black(f'width:{width} - heigh:{height}'))
-	image = Image.new('RGB', (width, height))
-	print(image.__dict__)
+	#image = Image.new('RGB', (width, height))
+	#print(image.__dict__)
 	print(term.green_on_black(f'type: {type(image_bytes)}, length: {len(image_bytes)}'))
 	#print(image_bytes)
-	image.putdata(image_bytes)
-	user_id = dic['user']['user_id']
+	#size = width*height
+	#image_bytes_as_3tuple=[]
+	image = Image.frombytes('RGB', (width, height), (image_bytes))
+	#image.putdata(image_bytes)
+	user_id = dic['user']['userId']
 	datetime = dic['datetime']
 	save_path = f'/home/user/Desktop/volume/color_images/images/{user_id}_{datetime}.png'
 	image.save(save_path)
 	print(term.green_on_black(f'Saved image on path {save_path}'))
 	color_image_publish['path'] = save_path
-	return color_image_publish
+	return json.dumps(color_image_publish)
 		
     
 
@@ -43,16 +47,25 @@ def color_image_parser_callback(channel, method, properties, body):
 	channel.exchange_declare('color_image', exchange_type='fanout')
 	channel.basic_publish(exchange='color_image', routing_key='', body=to_publish)
 
-def color_image_parser_main(mq):#Consider the initialization to be one-for-all
-	print(mq)
-	connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
-	channel = connection.channel()
-	channel.exchange_declare('parsers', exchange_type='fanout')
-	result = channel.queue_declare(queue='', exclusive=True)
-	queue_name = result.method.queue
-	channel.queue_bind(exchange = 'parsers', queue = queue_name)
-	print('color_Image parser consuming...')
+def color_image_parser_main(mq_url):#Consider the initialization to be one-for-all
+	print(mq_url)
+	
+	mq = MQer(mq_url)
+	
+	mq.create_exchange('parsers', exchange_type = 'fanout')
+	queue_name = mq.subscribe_to_exchange('parsers', return_queue = True) #we have a new queue connected to the exchange
+	mq.connect_to_consume_function(queue_name, callback_function=color_image_parser_callback)
+	print('parser_consuming consuming...')
+	mq.start_consuming()
+	
+	#connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+	#channel = connection.channel()
+	#channel.exchange_declare('parsers', exchange_type='fanout')
+	#result = channel.queue_declare(queue='', exclusive=True)
+	#queue_name = result.method.queue
+	#channel.queue_bind(exchange = 'parsers', queue = queue_name)
+	#print('color_Image parser consuming...')
 
-	channel.basic_consume(queue=queue_name, on_message_callback=color_image_parser_callback, auto_ack=True)
-	channel.start_consuming()
+	#channel.basic_consume(queue=queue_name, on_message_callback=color_image_parser_callback, auto_ack=True)
+	#channel.start_consuming()
 	

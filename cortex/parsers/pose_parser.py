@@ -1,5 +1,5 @@
 from .parsers_main import subscribe
-from .mq import MQer
+from ..mq import MQer
 import pika
 import json
 import blessings
@@ -33,20 +33,22 @@ def pose_parser_callback(channel, method, properties, body):
 
 def pose_parser_main(mq_url):
 	#MQ related to localhost
-	connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
-	channel = connection.channel()
+	#connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+	#channel = connection.channel()
 	mq = MQer(mq_url)
 	
 	mq.create_exchange(exchange_name = 'parsers', exchange_type = 'fanout')
-	mq.subscribe_to_exchange('parsers')
-	mq.
-
-	channel.exchange_declare('parsers', exchange_type='fanout')
-
-	result = channel.queue_declare(queue='', exclusive=True)
-	queue_name = result.method.queue
-	channel.queue_bind(exchange = 'parsers', queue = queue_name)
-	
+	queue_name = mq.subscribe_to_exchange('parsers', return_queue = True) #we have a new queue connected to the exchange
+	mq.connect_to_consume_function(queue_name, callback_function=pose_parser_callback)
 	print('pose consuming...')
-	channel.basic_consume(queue=queue_name, on_message_callback=pose_parser_callback, auto_ack=True)
-	channel.start_consuming()
+	mq.start_consuming()
+	
+	#channel.exchange_declare('parsers', exchange_type='fanout')
+
+	#result = channel.queue_declare(queue='', exclusive=True)
+	#queue_name = result.method.queue
+	#channel.queue_bind(exchange = 'parsers', queue = queue_name)
+	
+	
+	#channel.basic_consume(queue=queue_name, on_message_callback=pose_parser_callback, auto_ack=True)
+	#channel.start_consuming()

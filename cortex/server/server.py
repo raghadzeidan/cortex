@@ -6,7 +6,7 @@ import logging
 import time
 import random
 import traceback
-from .mq import MQer
+from ..mq import MQer
 from blessings import Terminal
 from google.protobuf.json_format import MessageToDict
 import numpy as np
@@ -184,15 +184,15 @@ class CortextServer(BaseHTTPRequestHandler):
 					USERS_INFO[user_biscuit] = user_data 
 					self.send_response(200, user_biscuit)
 					
-				elif (current_biscuit := biscuit_url(self.path)) is not None:
+				elif (current_biscuit := biscuit_url(self.path)) is not None: 
 					content_length = int(self.headers['Content-Length'])
 					snapshot_data = self.rfile.read(content_length)
 					self.send_response(200)
 					driver = DEFAULT_DRIVER(current_biscuit, snapshot_data)
-					test = driver.prepare_to_publish()		
+					test = driver.prepare_to_publish()
 					#also needs decoupling (MQ)
-					server_mq.create_exchange(exchange='parsers', exchange_type = 'fanout')	
-					server_mq.publish(exhange = 'parsers', key = '', body = test)	
+					server_mq.create_exchange(exchange='parsers', exchange_type='fanout')
+					server_mq.publish(exchange='parsers', key='', body=test)
 					#channel.exchange_declare(exchange='parsers', exchange_type='fanout')
 					#channel.basic_publish(exchange='parsers', routing_key='', body=test)
 				else:
@@ -210,18 +210,23 @@ class CortextServer(BaseHTTPRequestHandler):
 class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
     """Handle requests in a separate thread."""
     pass
-    
-#TODO:bad practice, consider puting them as default args (Server and the serverClass)
+
+
 def run_server(host, port, mq_url):
+
 	'''The protocol is an HTTP protocol between the server and his clinets.
 	The protocol is as follows:
-		Client first sends a /config GET request in order to received the available parsers in the framework
-		(some client may not want to connect if available parsers is not suitable).
-		if client chooses to connect, he then sends a /hello POST request, inside it there is the user's data
-		the server then sends an OK response along with a biscuit, which is a unique number (user_id cont with a random 8-digit number) that then the client
-		can POST /hello/biscuit/snapshot request in order to send snapshot (starts streaming snapshot in his own unique path)
-		this is just for security measure,  to prevent from 3rd parites to simply do a POST user_id/snapshot with a specific user_id
-		biscuit are saved in a simple dictionary at server's end.''' 
+	Client first sends a /config GET request in order to received the available
+	parsers in the framework(some client may not want to connect if available
+	parsers is not suitable). if client chooses to connect, he then sends a /hello
+	POST request, inside it there is the  user's datathe server then sends
+	an OK response along with a biscuit, which is a unique number (user_id
+	cont with a random 8-digit number) that then the clientcan POST
+	/hello/biscuit/snapshot request in order to send snapshot (starts streaming
+	snapshot in his own unique path). this is just for security measure,
+	to prevent from 3rd parites to simply do a POST user_id/snapshot with
+	a specific user_id biscuit are saved in a simple dictionary at server's
+	end.'''
 	global server_mq
 	address = (host, int(port))
 	server_mq = MQer(mq_url)
@@ -234,6 +239,7 @@ def run_server(host, port, mq_url):
 		pass
 	httpd.server_close()
 	logging.info('Stopped Server.')
+
+
 if __name__ == '__main__':
 	print('hi')
-

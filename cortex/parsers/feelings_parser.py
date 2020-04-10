@@ -1,5 +1,6 @@
 from .parsers_main import subscribe
 import pika
+from ..mq import MQer
 import json
 import blessings
 term = blessings.Terminal()
@@ -25,16 +26,25 @@ def feelings_parser_callback(channel, method, properties, body):
     
     
 #print('Feelings parser consuming...')
-def feelings_parser_main(mq):
+def feelings_parser_main(mq_url):
 	#MQ related to localhost
-	connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
-	channel = connection.channel()
+	
+	mq = MQer(mq_url)
+	
+	mq.create_exchange(exchange_name = 'parsers', exchange_type = 'fanout')
+	queue_name = mq.subscribe_to_exchange('parsers', return_queue = True) #we have a new queue connected to the exchange
+	mq.connect_to_consume_function(queue_name, callback_function=feelings_parser_callback)
+	print('pose consuming...')
+	mq.start_consuming()
+	
+	#connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+	#channel = connection.channel()
 
-	channel.exchange_declare('parsers', exchange_type='fanout')
+	#channel.exchange_declare('parsers', exchange_type='fanout')
 
-	result = channel.queue_declare(queue='', exclusive=True)
-	queue_name = result.method.queue
-	channel.queue_bind(exchange = 'parsers', queue = queue_name)
-	print('feelings consuming...')
-	channel.basic_consume(queue=queue_name, on_message_callback=feelings_parser_callback, auto_ack=True)
-	channel.start_consuming()
+	#result = channel.queue_declare(queue='', exclusive=True)
+	#queue_name = result.method.queue
+	#channel.queue_bind(exchange = 'parsers', queue = queue_name)
+	#print('feelings consuming...')
+	#channel.basic_consume(queue=queue_name, on_message_callback=feelings_parser_callback, auto_ack=True)
+	#channel.start_consuming()
