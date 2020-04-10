@@ -6,6 +6,7 @@ import logging
 import time
 import random
 import traceback
+from .mq import MQer
 from blessings import Terminal
 from google.protobuf.json_format import MessageToDict
 import numpy as np
@@ -22,12 +23,11 @@ METADATA_LENGTH = 20
 COUNTER = 0
 logging.basicConfig()
 term = Terminal()
+
 USER_BISCUITS = {}
 USERS_INFO = {} #Has mapping from user biscuit to his information
 GENDER_MAP = {0:'m', 1:'f', 2:'o'}
-params = pika.ConnectionParameters('localhost')
-connection = pika.BlockingConnection(params)
-channel = connection.channel()
+server_mq = None
 
 def get_available_parsers():
 	return "@".join(AVAILABLE_PARSERS)
@@ -54,7 +54,8 @@ def check_bad_parser_error(parser_name):
 	if parser_name not in AVAILABLE_PARSERS:
 		print(term.red(f"Tried to send data of unsupported parser: {parser_name}"))
 		raise TypeError
-
+		
+		
 class JsonPrepareDriver():
 	'''This class takes a snapshot and prepares its format from the client-server format
 	(project-chosen protocol which is protobuf) and prepares it as a json format before 
@@ -171,6 +172,7 @@ class CortextServer(BaseHTTPRequestHandler):
 				self.end_headers()
 			
 	def do_POST(self):
+		
 			try:
 				print(self.path)
 				if self.path == '/hello':
@@ -187,11 +189,12 @@ class CortextServer(BaseHTTPRequestHandler):
 					snapshot_data = self.rfile.read(content_length)
 					self.send_response(200)
 					driver = DEFAULT_DRIVER(current_biscuit, snapshot_data)
-						
 					test = driver.prepare_to_publish()		
-					#also needs decoupling (MQ)			
-					channel.exchange_declare(exchange='parsers', exchange_type='fanout')
-					channel.basic_publish(exchange='parsers', routing_key='', body=test)
+					#also needs decoupling (MQ)
+					server_mq.create_exchange(exchange='parsers', exchange_type = 'fanout')	
+					server_mq.publish(exhange = 'parsers', key = '', body = test)	
+					#channel.exchange_declare(exchange='parsers', exchange_type='fanout')
+					#channel.basic_publish(exchange='parsers', routing_key='', body=test)
 				else:
 					print(term.red_on_white('Bad server URL'))
 					raise TypeError(self.path)
@@ -209,7 +212,7 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
     pass
     
 #TODO:bad practice, consider puting them as default args (Server and the serverClass)
-def run_server(host, port):
+def run_server(host, port, mq_url):
 	'''The protocol is an HTTP protocol between the server and his clinets.
 	The protocol is as follows:
 		Client first sends a /config GET request in order to received the available parsers in the framework
@@ -219,7 +222,9 @@ def run_server(host, port):
 		can POST /hello/biscuit/snapshot request in order to send snapshot (starts streaming snapshot in his own unique path)
 		this is just for security measure,  to prevent from 3rd parites to simply do a POST user_id/snapshot with a specific user_id
 		biscuit are saved in a simple dictionary at server's end.''' 
+	global server_mq
 	address = (host, int(port))
+	server_mq = MQer(mq_url)
 	httpd = ThreadedHTTPServer(address, CortextServer)
 	logging.info('Starting Context Server.')
 	try:

@@ -24,7 +24,7 @@ def parse_that_fucking_depth(data):
 	save_path = f'/home/user/Desktop/volume/depth_images/images/{user_id}_{datetime}.png'
 	depth_publish['path'] = save_path
 	plt.savefig(save_path)
-	return json.dumps(depth_publish)
+	return json.dumps(publish_depth)
 
 def depth_image_parser_callback(channel, method, properties, body):
 	'''a callback for the parsing feelings function.
@@ -41,6 +41,7 @@ def depth_image_parser_main(mq):#Consider the initialization to be one-for-all
 	print(mq)
 	connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
 	channel = connection.channel()
+	
 	channel.exchange_declare('parsers', exchange_type='fanout')
 	result = channel.queue_declare(queue='', exclusive=True)
 	queue_name = result.method.queue
