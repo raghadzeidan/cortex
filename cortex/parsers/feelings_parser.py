@@ -16,9 +16,8 @@ def parse_those_fucking_feelings(data):
 	
     
 def feelings_parser_callback(channel, method, properties, body):
-	'''a callback for the parsing feelings function.
-	PROJECT: this allows decoupiling between MQ and actual parsing function'''
-	
+	'''a rabbitMQ callback function '''
+	print(term.red_on_white(method.exchange))
 	to_publish = parse_those_fucking_feelings(body)
 	channel.exchange_declare('feelings', exchange_type='fanout')
 	channel.basic_publish(exchange='feelings', routing_key='', body=to_publish)
@@ -31,7 +30,7 @@ def feelings_parser_main(mq_url):
 	
 	mq = MQer(mq_url)
 	
-	mq.create_exchange(exchange_name = 'parsers', exchange_type = 'fanout')
+	mq.create_exchange('parsers', exchange_type = 'fanout')
 	queue_name = mq.subscribe_to_exchange('parsers', return_queue = True) #we have a new queue connected to the exchange
 	mq.connect_to_consume_function(queue_name, callback_function=feelings_parser_callback)
 	print('pose consuming...')

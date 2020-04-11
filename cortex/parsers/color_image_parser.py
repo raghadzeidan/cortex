@@ -21,12 +21,7 @@ def parse_that_fucking_image(data):
 		print(term.green_on_black(f'Opened path {image_bytes_path}'))
 		image_bytes = f.read()
 	print(term.green_on_black(f'width:{width} - heigh:{height}'))
-	#image = Image.new('RGB', (width, height))
-	#print(image.__dict__)
 	print(term.green_on_black(f'type: {type(image_bytes)}, length: {len(image_bytes)}'))
-	#print(image_bytes)
-	#size = width*height
-	#image_bytes_as_3tuple=[]
 	image = Image.frombytes('RGB', (width, height), (image_bytes))
 	#image.putdata(image_bytes)
 	user_id = dic['user']['userId']
