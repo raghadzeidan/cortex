@@ -47,7 +47,7 @@ def project_client_should_send(available_parsers):
 	for our project purposes, this always returns True cause we're always sending snapshots
 	no matter.
 	FOR_DEVELOPERS: if things change, wanting clients sending specific params only, this
-	function must be implemented. only supports state-less contexts for the sake of simplicity.'''
+	function must be implemented. only supports state-less contexts for now'''
 	return True
 def upload_sample(host, port, path, client_context = project_client_should_send):
 	
@@ -75,8 +75,8 @@ def upload_sample(host, port, path, client_context = project_client_should_send)
 	client_biscuit_snapshot_url = f'{server_url}/{reader.user_id}/{client_biscuit}/snapshot'
 	cnt = 0
 	for snapshot in reader:
-		print(term.yellow_on_black('Sleeping for 5 seconds before sending next snapshot.'))
-		time.sleep(5) #TODO check type of sent stuff
+		print(term.yellow_on_black('Sleeping for 2 seconds before sending next snapshot.'))
+		time.sleep(2) #TODO check type of sent stuff
 		if cnt >= 0:
 			requests.post(client_biscuit_snapshot_url, data = proto_prepare_snapshot_for_takeoff(snapshot))
 		cnt = cnt + 1

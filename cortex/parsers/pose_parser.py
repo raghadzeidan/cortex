@@ -37,7 +37,7 @@ def pose_parser_main(mq_url):
 	#channel = connection.channel()
 	mq = MQer(mq_url)
 	
-	mq.create_exchange(exchange_name = 'parsers', exchange_type = 'fanout')
+	mq.create_exchange('parsers', exchange_type = 'fanout')
 	queue_name = mq.subscribe_to_exchange('parsers', return_queue = True) #we have a new queue connected to the exchange
 	mq.connect_to_consume_function(queue_name, callback_function=pose_parser_callback)
 	print('pose consuming...')

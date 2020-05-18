@@ -26,7 +26,7 @@ def cli():
 @cli.command('run-parser')
 @click.argument('parser_name')#,help='this should have the parser name that we want to parse this specific data using')
 @click.argument('mq')
-def micro_server_run_parser(parser_name, mq):#this shit is temporaray, this should call to other function defined in main parser function in parser package
+def microservice_run_parser(parser_name, mq):#this shit is temporaray, this should call to other function defined in main parser function in parser package
 	print(mq)
 	print(parser_name)
 	if parser_name == 'feelings':

@@ -8,7 +8,7 @@ import blessings
 term = blessings.Terminal()
 
 
-@subscribe('color_image')
+@subscribe('depth_image')
 def parse_that_fucking_depth(data):
 	dic = json.loads(data)
 	publish_depth = {}
@@ -23,7 +23,7 @@ def parse_that_fucking_depth(data):
 	user_id = dic['user']['userId']
 	datetime = dic['datetime']
 	save_path = f'/home/user/Desktop/volume/depth_images/images/{user_id}_{datetime}.png'
-	publish_depth['path'] = save_path
+	publish_depth['depth_image'] = save_path
 	plt.savefig(save_path)
 	return json.dumps(publish_depth)
 
