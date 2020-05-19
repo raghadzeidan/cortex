@@ -1,4 +1,4 @@
-from .saver import Saver, DB_SUPPORTED_FORMATS
+from .saver import DatabaseDriver, DB_SUPPORTED_FORMATS
 from ..mq import MQer
 saver = None
 def main_saver_callback(channel, method, properties, body):
@@ -13,7 +13,7 @@ def main_saver_callback(channel, method, properties, body):
 
 def run_saver_as_microservice(db_url, mq_url):
 	global saver
-	saver = Saver(db_url)
+	saver = DatabaseDriver(db_url)
 	mq = MQer(mq_url)
 	
 	for formaat in DB_SUPPORTED_FORMATS: #iterating over supported saving-formats and connecting them to his callback function

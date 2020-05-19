@@ -20,6 +20,7 @@ class MongoDriver():
 		self.db = self.client.db
 		self.users = self.db.users
 		
+		
 	def first_one(self, current_snapshot_id):
 		'''this function is applied after every data recieved from
 		saver that need to be saved, he first cheks if some other data 
@@ -29,12 +30,12 @@ class MongoDriver():
 		#this implies someone has submitted something to this user_id#datetime combo already
 		result = self.users.find_one({'_id':current_snapshot_id}) 
 		print(result)
-		return False if result else True
+		return False if result else True #result should be null if nothing is found.
 		
 	def save(self, data_name ,data):
 		'''this function receives a data_name to be save and dictionary of
 		that data, after being converted into the relevant-expected format (dictionary) '''
-		#print(term.red_on_white(str(data)))
+		
 		user_id = data['user']['userId']
 		datetime = data['datetime']
 		
@@ -42,10 +43,8 @@ class MongoDriver():
 		#this is to gather multiple data from parsers that belong to same snapshot together.
 		current_snapshot_id = f'{user_id}#{datetime}' 
 		x = self.users.find()
-		#for z in x:
-		#	print(term.blue_on_white(str(z)))
+
 		if self.first_one(current_snapshot_id):
-			print('hi')
 			self.users.insert_one({'_id':current_snapshot_id}) #unique _id of current snapshot is user_id#datetime
 			print(term.yellow_on_white(f'{data_name} is here first, metada has been set'))
 		
@@ -55,7 +54,11 @@ class MongoDriver():
 		print(term.red_on_white(f'Data of {data_name} saved'))
 		if not result:
 			raise ValueError(f"Something went wrong with saving data: user ID: {user_id}, datetime: {datetime}, data name: {data_name}")
-		
+			
+		#save user information.
+		result = 
+	def load():
+		pass
 		
 		
 
@@ -73,7 +76,7 @@ DB_DRIVERS = {'mongodb':  MongoDriver}
 DB_SUPPORTED_FORMATS = {'feelings', 'color_image', 'depth_image', 'pose'}
 MQ_TO_DB_DRIVER = JsonOUTtoMongoIN
 
-class Saver:
+class DatabaseDriver:
 	
 	def __init__(self, url):
 		furl_object = furl(url)
