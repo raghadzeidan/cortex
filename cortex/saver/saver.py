@@ -51,8 +51,10 @@ class MongoDriver():
 		result = self.users.find_one({"_id":user_id}, {"snapshots":{"$elemMatch":{"datetime":datetime}}})
 		result_length = len(result)
 		print(f"result length = {result_length}")
+		snapshot_id = f"{user_id}{datetime}" #the unique snapshot id is concatenation of user_id and datetime of snapshot
 		if result_length == 1: #if first one here, then should initialize the datetime inside current snapshot document in the users' snapshots array
 			self.users.update_one({"_id":user_id}, {"$push":{"snapshots":{"datetime":datetime}}})#push generates array automatically
+			self.users.update_one({"_id":user_id,"snapshots.datetime":datetime},{"$set":{ "snapshots.$.snapshotId":snapshot_id}}) #insert snapshot ID for API purposes PROJECT: chose it to be the same as datetime for the sake of simplicity
 		elif result_length !=2:
 			raise TypeError('something went wrong in the database.')
 		
@@ -74,8 +76,19 @@ class MongoDriver():
 		print(term.red_on_white("X"))
 		
 	def load_users(self):
-		return self.users.find({},{"user_info":1, "_id":0})
+		return self.users.find({},{"user_info.userId":1,"user_info.username":1,"_id":0})
 		
+	def load_user_info(self, user_id):
+		return self.users.find_one({"_id":user_id}, {"user_info":1, "_id":0})
+		
+	def load_user_snapshots_list(self,user_id):
+		return self.users.find_one({"_id":user_id}, {"snapshots.datetime":1,"snapshots.snapshotId":1, "_id":0}) 
+	
+	def load_user_snapshot(self, user_id, snapshot_id):
+		print("XX" + str(snapshot_id))
+		debug = self.users.find_one({"snapshots.snapshotId":snapshot_id}, {"_id":0, "snapshots":{"$elemMatch":{"snapshotId":snapshot_id}}})
+		print(debug)
+		return debug
 		
 
 
@@ -89,12 +102,40 @@ class JsonToMongo():
 		return json.loads(data)
 
 class MongoToJson():
-	'''This driver converts from DB format to the format that the API works in.
+	'''This driver converts from DB format to python dictionary for the purpose of API.
 	in our cause, this converting-driver expects cursor of MONGODB type, and processes them
-	according to the rest-api desires and returns in JSON format. '''
+	according to python-dictionary '''
 	def convert_users_list(self, cursor):
-		array = list(cursor)
-		return json.dumps(array)
+		array = list(cursor) #returns list of user_info : {relevant fields}
+		smaller_array = [array[i]['user_info'] for i in range(len(array))] #getting rid of the user_info field
+		print(smaller_array)
+		return smaller_array
+		
+	def convert_user_info(self, result):
+		'''Here we don't process much, the resut of the MongoDriver's loa_user_info is already a dictionary.
+		we just need to get rid of the header and retreive the nested dictionary only. '''
+		if result == None:
+			print("User specified not found.")
+			return {}
+		return result['user_info']
+	def convert_user_snapshots_list(self,result):
+		if result == None:
+			print("snapshots non-existent")
+			return {}
+		return result['snapshots']
+		
+	def convert_user_snapshot(self, result):
+		snapshot = result['snapshots'][0]
+		clean_snapshot = snapshot.copy()
+		clean_snapshot.pop('datetime')
+		clean_snapshot.pop('snapshotId')
+		
+		available_results = [key for key in clean_snapshot if len(clean_snapshot[key])>0 ] #length of a result menaing its not empty, hence available in the current snapshot
+																						   #POJECT: put them in list, set is not Json-serializable
+		return_dic = {"datetime":snapshot['datetime'], "snapshotId":snapshot['snapshotId']}
+		return_dic["results"] = available_results
+		print(term.red_on_white(str(return_dic)))
+		return return_dic
 		
 DB_DRIVERS = {'mongodb':  MongoDriver}
 DB_SUPPORTED_FORMATS = {'feelings', 'color_image', 'depth_image', 'pose'}
@@ -126,6 +167,23 @@ class DatabaseDriver:
 		data_retreived = self.db_driver.load_users()
 		users_list_json = self.db_to_api_driver.convert_users_list(data_retreived)
 		return users_list_json
+		
+	def load_user_info(self, user_id):
+		data_retreived = self.db_driver.load_user_info(user_id)
+		specific_user_info = self.db_to_api_driver.convert_user_info(data_retreived)
+		return specific_user_info
+	
+	def load_user_snapshots_list(self, user_id):
+		data_retreived = self.db_driver.load_user_snapshots_list(user_id)
+		user_snapshots_list = self.db_to_api_driver.convert_user_snapshots_list(data_retreived)
+		return user_snapshots_list
+		
+	def load_user_snapshot_results(self, user_id, snapshot_id):
+		'''This function, with the help of db_driver, loads information of a specific snapshot, and returns a dictionary
+		containing the available results to be used in the API'''
+		data_retreived = self.db_driver.load_user_snapshot(user_id, snapshot_id)
+		return_dic = self.db_to_api_driver.convert_user_snapshot(data_retreived)
+		return return_dic
 		
 	
 		
