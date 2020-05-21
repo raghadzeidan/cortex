@@ -51,13 +51,6 @@ def get_image_data(uid, snapshotId, result_name):
 		return {}
 	return flask.send_file(path, mimetype='image/gif')
 	
-	
-	
-	
-	
-	
-
-
 def run_api_server(host, port, database_url):
 	global loader
 	loader = DatabaseDriver(database_url)
