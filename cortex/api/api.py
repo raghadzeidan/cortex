@@ -37,7 +37,7 @@ def get_snapshot_result(uid, snapshotId, result_name):
 		return_dic['data_url'] = f"/users/{uid}/snapshots/{snapshotId}/{result_name}/data"
 	else:
 		return_dic = results_dic #feelings and pose case
-	return return_dic
+	return json.dumps(return_dic)
 	
 @app.route('/users/<string:uid>/snapshots/<string:snapshotId>/<string:result_name>/data')
 def get_image_data(uid, snapshotId, result_name):

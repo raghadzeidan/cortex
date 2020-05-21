@@ -11,10 +11,6 @@ from .client_utils import Reader
 FILE_FORMAT = 'protobuf://'
 COMPRESSION_FORMAT = "gzip"
 CLIENT_SERVER_PROTOCOL = 'http://'
-#from client_utils import Reader
-#from thought import Thought
-#from utils import Connection
-#import utils.render as render
 logging.basicConfig(level = logging.DEBUG,
                     filename = '.client_logs.txt',
                     format = '%(levelname).1s %(asctime)s %(message)s',
@@ -39,7 +35,6 @@ def proto_prepare_snapshot_for_takeoff(snapshot):
     the_snapshot_bytes = snapshot.SerializeToString()
     return the_snapshot_bytes #nothing to do for the serialized bytes, since the server is expecting with the same format
 
-
 def project_client_should_send(available_parsers):
 	'''This is a function that defines the context of the client, wether he should
 	send data to the server or not, according to the available parsers infromation he received
@@ -49,6 +44,7 @@ def project_client_should_send(available_parsers):
 	FOR_DEVELOPERS: if things change, wanting clients sending specific params only, this
 	function must be implemented. only supports state-less contexts for now'''
 	return True
+
 def upload_sample(host, port, path, client_context = project_client_should_send):
 	
 	
