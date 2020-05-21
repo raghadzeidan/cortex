@@ -32,7 +32,7 @@ def parse_that_fucking_image(data):
 	save_path = f'/home/user/Desktop/volume/color_images/images/{user_id}_{datetime}.png'
 	image.save(save_path)
 	imgplot = plt.imshow(mpimg.imread(save_path))
-	plt.show()
+	#plt.show()
 	time.sleep(0.2)
 	plt.close()
 	print(term.green_on_black(f'Saved image on path {save_path}'))
