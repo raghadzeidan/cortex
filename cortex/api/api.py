@@ -24,7 +24,6 @@ def get_user_snapshots(uid):
 	
 @app.route('/users/<string:uid>/snapshots/<string:snapshotId>')
 def get_snapshot(uid,snapshotId):
-	print("YY" + str(snapshotId) + "YY" + str(uid))
 	results_dic = loader.load_user_snapshot_results(uid, snapshotId)
 	return json.dumps(results_dic)
 	
