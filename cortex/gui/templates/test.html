@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-	<title>
-		Test1
-	</title>
-	<body>
-	<h1>My first Heading</h1>
-	<p> My first paragraph.
-	
-	hey.
-	</p>
-	</body>
-</html>
+{% extends "users_templates.html" %}
+
+{%block title%}Index{%endblock%}
+
+{%block main%}
+	<h1>Home</h1>
+{%endblock %}
