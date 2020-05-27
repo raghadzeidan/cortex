@@ -1,25 +1,19 @@
 {% extends "users_templates.html" %}
 
-{%block title%}Index{%endblock%}
+{%block title%}Home{%endblock%}
 
-{%block card%}
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Dan Gittik
-        </button>
-      </h2>
+{%block main%}
+<div class="container">
+ <div class="row">
+	<div class= "col-sm">
+	</div>
+	<div class = "col-sm">
+		<div class="mx-auto" style="width: 200px; margin-top: 20px;"><h3>Home</h3></div>
+	</div>
+	<div class = "col-sm">
     </div>
+ </div>
+<hr>
+<h3>Main block Home page</h3>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-		<p>Username: Dan Gittik
-		ID: 42
-		Age: 30</p>
-      </div>
-    </div>
-  </div>
-
-{%endblock %}
-
+<p>TestP</p>{%endblock%}
