@@ -75,14 +75,46 @@ class MongoDriver():
 		print(data_name + str(data_dic))
 		print(term.red_on_white("X"))
 		
-	def load_users(self):
-		return self.users.find({},{"user_info.userId":1,"user_info.username":1,"_id":0})
+	
+	def fill_user_info_dic(self, dic, userId, username, birthday, gender):
+		if userId:
+			dic['user_info.userId']=1
+		if username:
+			dic['user_info.username']=1
+		if birthday:
+			dic['user_info.birthday']=1
+		if gender:
+			dic['user_info.gender']=1
+			
+	def load_users(self, userId=0, username=0, birthday=0, gender=0):
+		'''Parameters indicate which info of users to return, this function is used both by
+		api and gui modules. '''
+		search_dic = {"_id":0}
+		self.fill_user_info_dic(search_dic,userId,username,birthday,gender)
+		return self.users.find({},search_dic)
 		
 	def load_user_info(self, user_id):
 		return self.users.find_one({"_id":user_id}, {"user_info":1, "_id":0})
 		
-	def load_user_snapshots_list(self,user_id):
-		return self.users.find_one({"_id":user_id}, {"snapshots.datetime":1,"snapshots.snapshotId":1, "_id":0}) 
+	def fill_search_dic(self, dic, datetime, snapshotId, feelings, pose, color_image, depth_image):
+		if datetime:
+			dic["snapshots.datetime"]=1
+		if snapshotId:
+			dic["snapshots.snapshotId"]=1
+		if feelings:
+			dic["snapshots.feelings"]=1
+		if pose:
+			dic["snapshots.pose"]=1
+		if color_image:
+			dic["snapshots.color_image"]=1
+		if depth_image:
+			dic["snapshots.depth_image"]=1
+		
+	def load_user_snapshots_list(self,user_id, datetime=0,snapshotId=0,feelings=0, pose=0, color_image=0, depth_image=0):
+		print(datetime,snapshotId,feelings,pose,color_image,depth_image)
+		search_dic = {"_id":0}
+		self.fill_search_dic(search_dic, datetime, snapshotId, feelings, pose, color_image, depth_image)
+		return self.users.find_one({"_id":user_id}, search_dic) 
 	
 	def load_user_snapshot(self, user_id, snapshot_id):
 		print("XX" + str(snapshot_id))
@@ -185,8 +217,8 @@ class DatabaseDriver:
 			raise TypeError(f'Unsupported data-format to save: {data_format}')
 		data_converted = self.data_convert_driver.convert(data) #dioctionary-ed and ready to go.
 		self.db_driver.save(data_format, data_converted)
-	def load_users(self):
-		data_retreived = self.db_driver.load_users()
+	def load_users(self, userId=0, username=0, birthday=0, gender=0):
+		data_retreived = self.db_driver.load_users(userId, username, birthday, gender)
 		users_list_json = self.db_to_api_driver.convert_users_list(data_retreived)
 		return users_list_json
 		
@@ -195,8 +227,9 @@ class DatabaseDriver:
 		specific_user_info = self.db_to_api_driver.convert_user_info(data_retreived)
 		return specific_user_info
 	
-	def load_user_snapshots_list(self, user_id):
-		data_retreived = self.db_driver.load_user_snapshots_list(user_id)
+	def load_user_snapshots_list(self, user_id, datetime=0,snapshotId=0,feelings=0, pose=0, color_image=0, depth_image=0):
+		data_retreived = self.db_driver.load_user_snapshots_list(user_id, datetime=datetime, snapshotId=snapshotId, feelings=feelings, pose=pose, color_image=color_image, depth_image=depth_image)
+		print(term.red_on_white(str(data_retreived)))
 		user_snapshots_list = self.db_to_api_driver.convert_user_snapshots_list(data_retreived)
 		return user_snapshots_list
 		

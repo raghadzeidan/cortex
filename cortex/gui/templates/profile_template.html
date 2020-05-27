@@ -59,7 +59,7 @@ var counter = 0;
 function loadItems() {
 
   // Use fetch to request data and pass the counter value in the QS
-  fetch(`/load/users/{{username}}?c=${counter}`).then((response) => {
+  fetch(`/load/users/{{uid}}_{{username}}?c=${counter}`).then((response) => {
 
     // Convert the response data to JSON
     response.json().then((data) => {

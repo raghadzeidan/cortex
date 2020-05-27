@@ -6,6 +6,7 @@ import logging
 import time
 import random
 import traceback
+import datetime as dt
 from ..mq import MQer
 from blessings import Terminal
 from google.protobuf.json_format import MessageToDict
@@ -73,6 +74,8 @@ class JsonPrepareDriver():
 		user_data = USERS_INFO[biscuit]
 		self.user.ParseFromString(user_data)
 		self.volume_path = '/home/user/Desktop/volume'
+	def stringify_datetime(self, datetime):
+		return str(dt.datetime.fromtimestamp(datetime / 1e3))
 		
 	def prepare_to_publish(self):
 		'''this is the main function of the driver. it takes the client-server protocol format 
@@ -80,7 +83,8 @@ class JsonPrepareDriver():
 		global COUNTER
 		to_publish = {}
 		self.prepare_user_info(to_publish)
-		to_publish['datetime'] = self.snapshot.datetime #uint_64	
+		date_string = self.stringify_datetime(self.snapshot.datetime)
+		to_publish['datetime'] = date_string 
 		self.prepare_feelings(to_publish)
 		self.prepare_color_image(to_publish)
 		self.prepare_pose(to_publish)
@@ -94,6 +98,7 @@ class JsonPrepareDriver():
 		user_gender = GENDER_MAP[self.user.gender] #gets single character
 		user_dict = MessageToDict(self.user)
 		user_dict['gender'] = user_gender
+		user_dict['birthday'] = self.stringify_datetime(user_dict['birthday'])
 		to_publish['user']=user_dict
 		print('xxxxxxxxxxxxxxxxxxxxx'+str(user_dict))
 		
