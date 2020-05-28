@@ -1,0 +1,152 @@
+{% extends "users_templates.html" %}
+
+{%block title%}{{username}}{%endblock%}
+
+{%block main%}
+<div class="container">
+      <div class="row">
+        <div class="col">
+
+          <h2 class="display-4 mb-3" style="margin-top:20px">{{username}}</h1> 
+
+<form action="/users/{{uid}}_{{username}}", method="POST">
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="search by snapshot id" aria-label="search by snapshot id" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <a href="/"><button class="btn btn-outline-secondary" type="button">Help</button></a>
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
+  </div>
+</div>
+			</form>
+			<hr>
+          <!-- div to contain the content -->
+          <div id="scroller" class="mb-3">
+
+            <!-- template schema, hidden from the dom -->
+            <template id="post_template">
+
+              <!-- template content -->
+             <div class="shadow-lg p-3 mb-5 bg-white rounded">
+              <div class="card mb-3 animated fadeIn shadow-sm">
+                <div class="card-body">
+                  <a id="linkage" href="#" class="text-decoration-none"><h4 class="card-title" id="title"></h4></a>
+                  <span class="text-muted" id="content">
+                  </span>
+			  
+	          </div>
+			</div>
+            </template>
+
+          </div>
+
+          <!-- element to trigger the IntersectionObserver -->
+          <div class="d-flex justify-content-center mb-3" id="sentinel">
+            <div class="spinner-border" role="status"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+{%endblock%}
+
+{%block javascript%}
+// Get references to the dom elements
+var scroller = document.querySelector("#scroller");
+var template = document.querySelector('#post_template');
+var loaded = document.querySelector("#loaded");
+var sentinel = document.querySelector('#sentinel');
+var linkage = document.querySelector('#linkage');
+
+var counter = 0;
+
+function loadItems() {
+
+  // Use fetch to request data and pass the counter value in the QS
+  fetch(`/load/users/{{uid}}_{{username}}?c=${counter}`).then((response) => {
+
+    // Convert the response data to JSON
+    response.json().then((data) => {
+
+      // If empty JSON, exit the function
+      if (!data.length) {
+
+        // Replace the spinner with "No more posts"
+        sentinel.innerHTML = "No more snapshots";
+        return;
+      }
+
+      // Iterate over the items in the response
+      for (var i = 0; i < data.length; i++) {
+		console.log(i)
+        //> Clone the HTML template
+        let template_clone = template.content.cloneNode(true);
+
+        // Query & update the template content
+        template_clone.querySelector("#linkage").href = `/users/{{uid}}_{{username}}/${data[i]['datetime']}`
+        template_clone.querySelector("#title").innerHTML = `${data[i]['datetime']}`;
+        template_clone.querySelector("#content").innerHTML = `<h6>Click to view {{username}}'s cognitions at this time.</h6>`
+		console.log(5)
+		var hunger = `${data[i]['feelings']['hunger']}` * 100;
+		console.log(hunger);
+		var thirst = `${data[i]['feelings']['thirst']}` * 100;
+		var exh = `${data[i]['feelings']['exhaustion']}` * 100;
+		
+		//console.log(hunger);
+		//console.log(thirst);
+		//console.log(exh);
+		//var hunger_html = "<div id= \"hunger_feeling_bar\" class=\"progress-bar progress-bar-striped bg-warning\" role=\"progressbar\" style=\"width: 10%\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow= \"80\"></div>"
+		//var thirst_html = "<div id= \"thirst_feeling_bar\" class=\"progress-bar progress-bar-striped bg-succeed\" role=\"progressbar\" style=\"width: 10%\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow= " + thirst +"></div>"
+		//var exh_html = "<div id= \"exh_feeling_bar\" class=\"progress-bar progress-bar-striped bg-danger\" role=\"progressbar\" style=\"width: 10%\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow= " + exh + "></div>"
+
+
+
+		//template_clone.querySelector("#hunger_progress").innerHTML=hunger_html;
+		//template_clone.querySelector("#thirst_progress").innerHTML=thirst_html;
+		//template_clone.querySelector("#exh_progress").innerHTML=exh_html;
+		
+		//console.log(template_clone.querySelector("#hunger_progress"));
+		//console.log(template_clone.querySelector("#thirst_progress"));
+		//console.log(template_clone.querySelector("#exh_progress"));
+		
+        // Append template to dom
+        scroller.appendChild(template_clone);
+
+        // Increment the counter
+        counter += 1;
+
+        // Update the counter in the navbar
+        //loaded.innerText = `${counter} items loaded`;
+
+      }
+    })
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+// Create a new IntersectionObserver instance
+var intersectionObserver = new IntersectionObserver(entries => {
+
+
+  // If intersectionRatio is 0, the sentinel is out of view
+  // and we don't need to do anything. Exit the function
+  if (entries[0].intersectionRatio <= 0) {
+    return;
+  }
+
+  //> Call the loadItems function
+  loadItems();
+
+});
+	intersectionObserver.observe(sentinel)
+{%endblock%}
+

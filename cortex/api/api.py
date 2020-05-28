@@ -9,7 +9,7 @@ loader = None
 @app.route('/users')
 def get_users():
 	'''Returns the list of all the supported users, including their IDs and names only.'''
-	users_list = loader.load_users()
+	users_list = loader.load_users(userId=1, username=1)
 	return json.dumps(users_list)
 	
 @app.route('/users/<int:uid>') #float not int?
@@ -19,7 +19,8 @@ def get_user(uid):
 	
 @app.route('/users/<int:uid>/snapshots')
 def get_user_snapshots(uid):
-	user_snapshots_list = loader.load_user_snapshots_list(str(uid))
+	'''Returns list of snapshots of user, with snapshotId and datetime only. '''
+	user_snapshots_list = loader.load_user_snapshots_list(str(uid), datetime=1, snapshotId=1)
 	return json.dumps(user_snapshots_list)
 	
 @app.route('/users/<string:uid>/snapshots/<string:snapshotId>')
