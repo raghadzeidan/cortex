@@ -3,17 +3,38 @@
 {%block title%}Home{%endblock%}
 
 {%block main%}
-<div class="container">
- <div class="row">
-	<div class= "col-sm">
-	</div>
-	<div class = "col-sm">
-		<div class="mx-auto" style="width: 200px; margin-top: 20px;"><h3>Home</h3></div>
-	</div>
-	<div class = "col-sm">
-    </div>
- </div>
-<hr>
-<h3>Main block Home page</h3>
 
-<p>TestP</p>{%endblock%}
+<div class = "container">
+<div class="row">
+<div class = "col">
+		<div class="mx-auto" style="width: 200px; margin-top: 20px; text-align:center"><h3>Home</h3></div>
+		 <hr>
+		 <h6>This is the GUI part of the Advanced System Deisgn Project.</h6>
+		 <h6>Project brief summary: The main thing is a cognition snapshot, which includes user information and sequence of snapshots that include cognitions, specifically each snapshots includes information about the client's feelings, pose, image of what they're seeing and depth image of what they're seeing. as above, a client transmits this huge binary file with his cognitions to a server, a server then separates data via the cognition (he separates feelings data, pose data etc... from each snapshots), and then publishes them to a a message queue, which then 4 different parsers process the data given and re-publishes the process information (processed information for example is the binary data of the image, being processed into a .png file using pillow in python) into the message queue, which then a saver module saves the data in the database. to reflect the database, there is a restful-api, a cli (using click), and gui interface.</h6>
+	<hr>
+		<div class="mx-auto" style="width: 200px; margin-top: 40px; text-align:center"><h3>Github</h3></div>
+		 <hr>
+		 <a><h6>https://github.com/raghadzeidan/first_project</h6></a>
+		 <hr>
+		<div class="mx-auto" style="width: 200px; margin-top: 40px; text-align:center"><h3>Help</h3></div>
+		 <hr>
+		 <h6>In order to search a snapshot inside a user's profile, you have to provide the snapshot's specific ID.
+		 to get the list of available snapshots of the user with snapshot IDs, see the documentation in github.</h6>
+		<hr>
+		
+		<div class="mx-auto" style="width: 200px; margin-top: 40px; text-align:center"><h3>Credits/sGrapes</h3></div>
+		 <hr>
+			<figure class="figure">
+  <img style="height:500px; width:550px" src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.0-9/69432678_2685479304805213_6044614836405403648_o.jpg?_nc_cat=100&_nc_sid=85a577&_nc_ohc=kQ8ZoMkk_kcAX_zKbyk&_nc_ht=scontent.fhfa2-2.fna&oh=6ff70ce38ff6972dfdc5f0e88ff72601&oe=5EF5B7A0" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption">Raghad Zeidan</figcaption>
+</figure>
+<figure class="figure">
+  <img style="height:500px; width:550px" src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.0-9/70943508_10157959976344274_3101791562598711296_o.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_ohc=ScmNs36xLsoAX8JJ9d3&_nc_ht=scontent.fhfa2-2.fna&oh=cabe6b4f9964604fb17d6630ceb4893f&oe=5EF39BFB" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption">Raghad Zeidan with friends and grapes.</figcaption>
+</figure>
+		<hr>
+</div>
+
+</div>
+</div>
+{%endblock%}

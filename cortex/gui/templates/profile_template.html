@@ -7,8 +7,18 @@
       <div class="row">
         <div class="col">
 
-          <h2 class="display-4 mb-3">{{username}}</h1>
+          <h2 class="display-4 mb-3" style="margin-top:20px">{{username}}</h1> 
 
+<form action="/users/{{uid}}_{{username}}", method="POST">
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="search by snapshot id" aria-label="search by snapshot id" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <a href="/"><button class="btn btn-outline-secondary" type="button">Help</button></a>
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
+  </div>
+</div>
+			</form>
+			<hr>
           <!-- div to contain the content -->
           <div id="scroller" class="mb-3">
 
@@ -16,19 +26,15 @@
             <template id="post_template">
 
               <!-- template content -->
+             <div class="shadow-lg p-3 mb-5 bg-white rounded">
               <div class="card mb-3 animated fadeIn shadow-sm">
                 <div class="card-body">
-                  <h4 class="card-title" id="title"></h4>
-                  <span class="text-muted" id="content"></span>
-                  <div id = "hunger_progress"class="progress">
-				  </div>
-				  <div id = "exh_progress" class="progress">
-				  </div>
-				  <div id = "thirst_progress" class="progress">
-				  </div>
-                </div>
-              </div>
-
+                  <a id="linkage" href="#" class="text-decoration-none"><h4 class="card-title" id="title"></h4></a>
+                  <span class="text-muted" id="content">
+                  </span>
+			  
+	          </div>
+			</div>
             </template>
 
           </div>
@@ -44,17 +50,15 @@
 
 {%endblock%}
 
-
 {%block javascript%}
 // Get references to the dom elements
 var scroller = document.querySelector("#scroller");
 var template = document.querySelector('#post_template');
 var loaded = document.querySelector("#loaded");
 var sentinel = document.querySelector('#sentinel');
+var linkage = document.querySelector('#linkage');
 
 var counter = 0;
-
-
 
 function loadItems() {
 
@@ -79,8 +83,9 @@ function loadItems() {
         let template_clone = template.content.cloneNode(true);
 
         // Query & update the template content
+        template_clone.querySelector("#linkage").href = `/users/{{uid}}_{{username}}/${data[i]['datetime']}`
         template_clone.querySelector("#title").innerHTML = `${data[i]['datetime']}`;
-        template_clone.querySelector("#content").innerHTML = `${data[i]['pose']}`+ "<h3>`${data[i]['depth_image']}`</h3>"+`${data[i]['color_image']}`;
+        template_clone.querySelector("#content").innerHTML = `<h6>Click to view {{username}}'s cognitions at this time.</h6>`
 		console.log(5)
 		var hunger = `${data[i]['feelings']['hunger']}` * 100;
 		console.log(hunger);

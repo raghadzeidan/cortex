@@ -189,6 +189,7 @@ class MongoToJson(): #this class is very related to the api, consider moving it 
 		convert driver. the data by nature is a dictionary of values, so it just returns the
 		relevant data from the returned struture (also python-dict) of the mongoDriver for it
 		to be used by the api_get methods '''
+		print(result)
 		return result['snapshots'][0]
 
 DB_DRIVERS = {'mongodb':  MongoDriver}
@@ -241,7 +242,7 @@ class DatabaseDriver:
 		return return_dic
 		
 	def load_user_result(self, user_id, snapshot_id, result_name):
-		if result_name == "feelings": #can't used DB_SUPPORTED_FORMATS cause of name-inconsistency.
+		if result_name == "feelings": #can't use DB_SUPPORTED_FORMATS cause of name-inconsistency.
 			data_retreived = self.db_driver.load_feelings_result(user_id, snapshot_id)	
 			data_converted = self.db_to_api_driver.result_easy_convert(data_retreived)
 		elif result_name == "pose":
