@@ -11,16 +11,10 @@ from ..mq import MQer
 from blessings import Terminal
 from google.protobuf.json_format import MessageToDict
 import numpy as np
-#import utils.render as render
-#from utils import Connection, Listener
-#from thought import Thought, render_from_bytes
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from socketserver import ThreadingMixIn
 from ..parsers import AVAILABLE_PARSERS
 from .server_utils import TheUser, TheSnapshot
-#from .server_utils import JsonPrepareDriver
-THREADS_NUMBER = 5
-METADATA_LENGTH = 20
 COUNTER = 0
 logging.basicConfig()
 term = Terminal()
@@ -100,7 +94,6 @@ class JsonPrepareDriver():
 		user_dict['gender'] = user_gender
 		user_dict['birthday'] = self.stringify_datetime(user_dict['birthday'])
 		to_publish['user']=user_dict
-		print('xxxxxxxxxxxxxxxxxxxxx'+str(user_dict))
 		
 	def prepare_feelings(self, to_publish):
 		check_bad_parser_error('feelings')
@@ -137,7 +130,6 @@ class JsonPrepareDriver():
 		unique_depth_path = self.volume_path + path_suffix
 		depth_dict = MessageToDict(self.snapshot.depth_image)
 		float_array = depth_dict['data']
-		#float_np_array = np.array(float_array)
 		np_array = np.reshape(float_array,(depth_dict['height'],depth_dict['width']))
 		np.save(unique_depth_path,np_array, allow_pickle=False) #saving numpy 2D array
 		

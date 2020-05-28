@@ -5,9 +5,10 @@ import datetime
 import logging
 import http.client
 import requests
-import logging
 import blessings
 from .client_utils import Reader
+
+
 FILE_FORMAT = 'protobuf://'
 COMPRESSION_FORMAT = "gzip"
 CLIENT_SERVER_PROTOCOL = 'http://'
@@ -46,19 +47,14 @@ def project_client_should_send(available_parsers):
 	return True
 
 def upload_sample(host, port, path, client_context = project_client_should_send):
-	
-	
 	reader_url = f'{FILE_FORMAT}{path}/?compressor={COMPRESSION_FORMAT}'
-	
-	
 	reader = Reader(reader_url)
 	server_url = f'http://{host}:{port}'
-	
 	#Getting available parsers from server
 	r = requests.get(server_url + "/config")
+	print(term.blue_on_white(str(r)))
 	available_parsers = r.reason.split("@") #client receives available parsers seperated by @
 	print(term.yellow_on_black(f'Available parsers for client: {available_parsers}'))
-	
 	should_takeoff = project_client_should_send(available_parsers)
 	if not should_takeoff:
 		logging.info('Client did not send snapshots to server. Server configurations not suitable')
@@ -69,16 +65,11 @@ def upload_sample(host, port, path, client_context = project_client_should_send)
 	client_biscuit = r.reason
 	print(term.yellow_on_black(f'Client\'s unique biscuit: {client_biscuit}'))
 	client_biscuit_snapshot_url = f'{server_url}/{reader.user_id}/{client_biscuit}/snapshot'
-	cnt = 0
 	for snapshot in reader:
 		print(term.yellow_on_black('Sleeping for 2 seconds before sending next snapshot.'))
-		time.sleep(2) #TODO check type of sent stuff
-		if cnt >= 0:
-			requests.post(client_biscuit_snapshot_url, data = proto_prepare_snapshot_for_takeoff(snapshot))
-		cnt = cnt + 1
-	print(r.text)
+		time.sleep(0.2) #TODO check type of sent stuff
+		requests.post(client_biscuit_snapshot_url, data = proto_prepare_snapshot_for_takeoff(snapshot))
 
 if __name__ == '__main__':
     argv = sys.argv
-    #upload_thought(argv[1], int(argv[2]), argv[3])
     upload_sample(argv[1],argv[2],argv[3])
