@@ -12,6 +12,7 @@ term = blessings.Terminal()
 
 @subscribe('color_image')
 def parse_that_fucking_image(data):
+	print(term.red_on_white(str(data)))
 	dic = json.loads(data)
 	print(term.red_on_white(str(dic)))
 	color_image_publish = {}

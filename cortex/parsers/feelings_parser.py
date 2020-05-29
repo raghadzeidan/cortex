@@ -7,12 +7,15 @@ term = blessings.Terminal()
 
 @subscribe('feelings')
 def parse_those_fucking_feelings(data):
+	print(term.red_on_white(str(data)))
 	dic = json.loads(data)
 	publish_feelings = {}
 	publish_feelings['user'] = dic['user']
 	publish_feelings['datetime'] = dic['datetime']
 	publish_feelings['feelings'] = dic['feelings']
-	return json.dumps(publish_feelings)
+	debug = json.dumps(publish_feelings)
+	print(term.green_on_white(debug))
+	return debug
 	
     
 def feelings_parser_callback(channel, method, properties, body):
@@ -33,7 +36,7 @@ def feelings_parser_main(mq_url):
 	mq.create_exchange('parsers', exchange_type = 'fanout')
 	queue_name = mq.subscribe_to_exchange('parsers', return_queue = True) #we have a new queue connected to the exchange
 	mq.connect_to_consume_function(queue_name, callback_function=feelings_parser_callback)
-	print('pose consuming...')
+	print('feelings consuming...')
 	mq.start_consuming()
 	
 	#connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))

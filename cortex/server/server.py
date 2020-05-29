@@ -151,7 +151,6 @@ DEFAULT_DRIVER = JsonPrepareDriver
 
 	
 class CortextServer(BaseHTTPRequestHandler):
-	#prepare_driver = DEFAULT_PREPARE_DRIVER()
 	def get_unique_biscuit(self, user_id):
 		if user_id in USER_BISCUITS:
 			return USER_BISCUITS[user_id]
@@ -187,11 +186,8 @@ class CortextServer(BaseHTTPRequestHandler):
 					self.send_response(200)
 					driver = DEFAULT_DRIVER(current_biscuit, snapshot_data)
 					test = driver.prepare_to_publish()
-					#also needs decoupling (MQ)
 					server_mq.create_exchange(exchange='parsers', exchange_type='fanout')
 					server_mq.publish(exchange='parsers', key='', body=test)
-					#channel.exchange_declare(exchange='parsers', exchange_type='fanout')
-					#channel.basic_publish(exchange='parsers', routing_key='', body=test)
 				else:
 					print(term.red_on_white('Bad server URL'))
 					raise TypeError(self.path)

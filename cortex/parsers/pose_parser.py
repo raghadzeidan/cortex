@@ -10,12 +10,15 @@ term = blessings.Terminal()
 def parse_that_fucking_pose(data):
 	'''parser receives raw data that is consumed from MQ (json format of User+snapshot)
 	parses pose data and sticks userdata with them and republishes to his exchange '''
+	print(term.red_on_white(str(data)))
 	dic = json.loads(data)
 	publish_pose = {}
 	publish_pose['user'] = dic['user']
 	publish_pose['datetime'] = dic['datetime']
 	publish_pose['pose'] = dic['pose']
-	return json.dumps(publish_pose)
+	debug = json.dumps(publish_pose)
+	print(term.green_on_white(debug))
+	return debug
 
     
 def pose_parser_callback(channel, method, properties, body):

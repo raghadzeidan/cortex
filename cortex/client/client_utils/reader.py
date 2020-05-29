@@ -2,11 +2,12 @@ from .cortex_pb2 import 	User, Snapshot, Pose, ColorImage, DepthImage, Feelings
 from PIL import Image
 import gzip
 import logging
+from blessings import Terminal
 import datetime as dt
 from furl import furl
 
 INT_SIZE = 4
-
+term = Terminal()
 GENDERS_RMAP = {User.Gender.FEMALE:'f',User.Gender.MALE:'m', User.Gender.OTHER:'o'}
 UNCOMPRESSED = 'uncompressed'
 COMPRESSORS = {'gzip': gzip, 'uncompressed':'uncompressed'}
@@ -36,7 +37,11 @@ class ProtoReaderDriver:
 		snapshot.ParseFromString(buff)
 		return snapshot
 		
-	def read_all():
+	def read_all(self):
+		print("Y READING ALL")
+		print(self.fd)
+		x = self.fd.read()
+		print("INSIDE", x)
 		return self.fd.read()
 	def next_snapshot_exists(self):
 		'''this function returns True if there exists another snapshot to read, while at the same
@@ -82,6 +87,7 @@ class Reader:
 	
 	def open_file(self):
 		if self.compressor == UNCOMPRESSED:
+			print("RAGHD UNCOMPRESSED")
 			self.fd = open(self.path, "rb")
 		else:
 			self.fd = self.compressor.open(self.path, "rb")
@@ -92,13 +98,14 @@ class Reader:
 	def __init__(self, url):
 		ffurl = furl(url) 
 		self.compressor = find_compressor(ffurl)
+		print('X', term.red_on_white(str(ffurl.path)))
 		self.path = str(ffurl.path)[:-1] #TODO, path in furl path has extra / at the end
 		self.open_file() #can open path now, after extracting compression-type and file path
 		
 		self.reader_driver = find_reader_driver(ffurl)(self.fd) #initiating reader_driver with our file-descriptor
 		self.user = self.reader_driver.read_user_information()
 		
-	def read_all(self):
+	def debug_read_all(self):
 		'''debugging purposes'''
 		return self.reader_driver.read_all()
 		

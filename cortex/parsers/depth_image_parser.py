@@ -10,6 +10,7 @@ term = blessings.Terminal()
 
 @subscribe('depth_image')
 def parse_that_fucking_depth(data):
+	print(term.red_on_white(str(data)))
 	dic = json.loads(data)
 	publish_depth = {}
 	publish_depth['user'] = dic['user']
@@ -41,23 +42,9 @@ def depth_image_parser_callback(channel, method, properties, body):
 def depth_image_parser_main(mq_url):#Consider the initialization to be one-for-all
 	print(mq_url)
 	mq = MQer(mq_url)
-	
 	mq.create_exchange('parsers', exchange_type = 'fanout')
 	queue_name = mq.subscribe_to_exchange('parsers', return_queue = True) #we have a new queue connected to the exchange
 	mq.connect_to_consume_function(queue_name, callback_function=depth_image_parser_callback)
 	print('depth consuming...')
 	mq.start_consuming()
-	
-	
-	#connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
-	#channel = connection.channel()
-	
-	#channel.exchange_declare('parsers', exchange_type='fanout')
-	#result = channel.queue_declare(queue='', exclusive=True)
-	#queue_name = result.method.queue
-	#channel.queue_bind(exchange = 'parsers', queue = queue_name)
-	#print('depth_Image parser consuming...')
-
-	#channel.basic_consume(queue=queue_name, on_message_callback=depth_image_parser_callback, auto_ack=True)
-	#channel.start_consuming()
 	

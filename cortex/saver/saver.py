@@ -75,6 +75,11 @@ class MongoDriver():
 		print(data_name + str(data_dic))
 		print(term.red_on_white("X"))
 		
+	def debug_save(self, data):
+		self.users.insert_one(data)
+		
+	def debug_delete_id(self, user_id):
+		self.users.delete_one({"_id":user_id})
 	
 	def fill_user_info_dic(self, dic, userId, username, birthday, gender):
 		if userId:
@@ -94,7 +99,10 @@ class MongoDriver():
 		return self.users.find({},search_dic)
 		
 	def load_user_info(self, user_id):
-		return self.users.find_one({"_id":user_id}, {"user_info":1, "_id":0})
+		print("LOADING", user_id)
+		debug= self.users.find_one({"_id":user_id}, {"user_info":1, "_id":0})
+		print("DEBUG", debug)
+		return debug
 		
 	def fill_search_dic(self, dic, datetime, snapshotId, feelings, pose, color_image, depth_image):
 		if datetime:
@@ -263,5 +271,12 @@ class DatabaseDriver:
 			return {}
 		return data_converted
 		
+	def debug_save(self, data):
+		'''This funcion saves userid, user info and a snapshot for debug purposes '''
+		self.db_driver.debug_save(data)
+		
+	def debug_delete_id(self, user_id):
+		'''This function removes data from the db by a user_id, that was inserted for debug purposes'''
+		self.db_driver.debug_delete_id(user_id)
 	
 		
