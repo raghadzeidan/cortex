@@ -1,0 +1,184 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cortex.client.client_utils package &#8212; Advanced System Design Project  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="cortex-client-client-utils-package">
+<h1>cortex.client.client_utils package<a class="headerlink" href="#cortex-client-client-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-cortex.client.client_utils.cortex_pb2">
+<span id="cortex-client-client-utils-cortex-pb2-module"></span><h2>cortex.client.client_utils.cortex_pb2 module<a class="headerlink" href="#module-cortex.client.client_utils.cortex_pb2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-cortex.client.client_utils.reader">
+<span id="cortex-client-client-utils-reader-module"></span><h2>cortex.client.client_utils.reader module<a class="headerlink" href="#module-cortex.client.client_utils.reader" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cortex.client.client_utils.reader.ProtoReaderDriver">
+<em class="property">class </em><code class="descclassname">cortex.client.client_utils.reader.</code><code class="descname">ProtoReaderDriver</code><span class="sig-paren">(</span><em>fd</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.ProtoReaderDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="cortex.client.client_utils.reader.ProtoReaderDriver.next_snapshot_exists">
+<code class="descname">next_snapshot_exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.ProtoReaderDriver.next_snapshot_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>this function returns True if there exists another snapshot to read, while at the same
+time putting in the instance field that length in bytes (after reading it), if not
+it returns False. implemented this way cause of proto-buf/format of file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.client.client_utils.reader.ProtoReaderDriver.read_all">
+<code class="descname">read_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.ProtoReaderDriver.read_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.client.client_utils.reader.ProtoReaderDriver.read_next_snapshot">
+<code class="descname">read_next_snapshot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.ProtoReaderDriver.read_next_snapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>reads next snapshot, by reading a uint32_t determining length of next snapshot
+and then reading that many bytes and putting it in a snapshot object that was pre-defined
+in a proto_file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.client.client_utils.reader.ProtoReaderDriver.read_user_information">
+<code class="descname">read_user_information</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.ProtoReaderDriver.read_user_information" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cortex.client.client_utils.reader.Reader">
+<em class="property">class </em><code class="descclassname">cortex.client.client_utils.reader.</code><code class="descname">Reader</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.Reader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>this class defined an abstraction to a Reader reading a file.
+it supports differnet compression formats, as well as different sample formats
+Usage:</p>
+<blockquote>
+<div>Reader object is initiated with a URL like: ‘SCHEME://PATH/?compressor=COMP’
+SCHEME being the sample format, example: Protobuf
+PATH being the path to the sample format
+COMP being the compression format of the file, example : gzip or uncompressed (for non-compressed files)</div></blockquote>
+<p>to add another sample parsing foramt (SCHEME), you have to implement read_user_information, read_next_snapshot and
+next_snapshot_exists() functions. object needs to be initiated by opened file-descriptor</p>
+<p>to add another compression format (COMP), you have to implement a decompressing object, that implements
+open and close function. open fucking allowing to read byte-by-bye</p>
+<dl class="method">
+<dt id="cortex.client.client_utils.reader.Reader.close_file">
+<code class="descname">close_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.Reader.close_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.client.client_utils.reader.Reader.debug_read_all">
+<code class="descname">debug_read_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.Reader.debug_read_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>debugging purposes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.client.client_utils.reader.Reader.open_file">
+<code class="descname">open_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.Reader.open_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="cortex.client.client_utils.reader.Reader.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#cortex.client.client_utils.reader.Reader.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="cortex.client.client_utils.reader.find_compressor">
+<code class="descclassname">cortex.client.client_utils.reader.</code><code class="descname">find_compressor</code><span class="sig-paren">(</span><em>furl_object</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.find_compressor" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the compressed file format is supported. returns None if not supported</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cortex.client.client_utils.reader.find_reader_driver">
+<code class="descclassname">cortex.client.client_utils.reader.</code><code class="descname">find_reader_driver</code><span class="sig-paren">(</span><em>furl_object</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.client.client_utils.reader.find_reader_driver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-cortex.client.client_utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cortex.client.client_utils" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Raghad Zeidan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/cortex.client.client_utils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

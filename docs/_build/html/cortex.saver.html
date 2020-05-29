@@ -1,0 +1,347 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cortex.saver package &#8212; Advanced System Design Project  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="cortex-saver-package">
+<h1>cortex.saver package<a class="headerlink" href="#cortex-saver-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-cortex.saver.saver">
+<span id="cortex-saver-saver-module"></span><h2>cortex.saver.saver module<a class="headerlink" href="#module-cortex.saver.saver" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="cortex.saver.saver.DB_TO_API_DRIVER">
+<code class="descclassname">cortex.saver.saver.</code><code class="descname">DB_TO_API_DRIVER</code><a class="headerlink" href="#cortex.saver.saver.DB_TO_API_DRIVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#cortex.saver.saver.MongoToJson" title="cortex.saver.saver.MongoToJson"><code class="xref py py-class docutils literal"><span class="pre">cortex.saver.saver.MongoToJson</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cortex.saver.saver.DatabaseDriver">
+<em class="property">class </em><code class="descclassname">cortex.saver.saver.</code><code class="descname">DatabaseDriver</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.DatabaseDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="cortex.saver.saver.DatabaseDriver.debug_delete_id">
+<code class="descname">debug_delete_id</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.DatabaseDriver.debug_delete_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function removes data from the db by a user_id, that was inserted for debug purposes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.DatabaseDriver.debug_save">
+<code class="descname">debug_save</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.DatabaseDriver.debug_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>This funcion saves userid, user info and a snapshot for debug purposes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.DatabaseDriver.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>data_format</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.DatabaseDriver.find" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.DatabaseDriver.load_user_info">
+<code class="descname">load_user_info</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.DatabaseDriver.load_user_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.DatabaseDriver.load_user_result">
+<code class="descname">load_user_result</code><span class="sig-paren">(</span><em>user_id</em>, <em>snapshot_id</em>, <em>result_name</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.DatabaseDriver.load_user_result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.DatabaseDriver.load_user_snapshot_results">
+<code class="descname">load_user_snapshot_results</code><span class="sig-paren">(</span><em>user_id</em>, <em>snapshot_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.DatabaseDriver.load_user_snapshot_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function, with the help of db_driver, loads information of a specific snapshot, and returns a dictionary
+containing the available results to be used in the API</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.DatabaseDriver.load_user_snapshots_list">
+<code class="descname">load_user_snapshots_list</code><span class="sig-paren">(</span><em>user_id</em>, <em>datetime=0</em>, <em>snapshotId=0</em>, <em>feelings=0</em>, <em>pose=0</em>, <em>color_image=0</em>, <em>depth_image=0</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.DatabaseDriver.load_user_snapshots_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.DatabaseDriver.load_users">
+<code class="descname">load_users</code><span class="sig-paren">(</span><em>userId=0</em>, <em>username=0</em>, <em>birthday=0</em>, <em>gender=0</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.DatabaseDriver.load_users" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.DatabaseDriver.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>data_format</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.DatabaseDriver.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cortex.saver.saver.JsonToMongo">
+<em class="property">class </em><code class="descclassname">cortex.saver.saver.</code><code class="descname">JsonToMongo</code><a class="headerlink" href="#cortex.saver.saver.JsonToMongo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>this driver converts from the MQ format to the DB Driver format
+in our case, the MQ protocol is json and the driver is mongo
+the driver expected python dictionaries, so simple json.loads sufficies.
+for more complicated formats other than json that might have been used, this
+class could be benefitial</p>
+<dl class="method">
+<dt id="cortex.saver.saver.JsonToMongo.convert">
+<code class="descname">convert</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.JsonToMongo.convert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cortex.saver.saver.MQ_TO_DB_DRIVER">
+<code class="descclassname">cortex.saver.saver.</code><code class="descname">MQ_TO_DB_DRIVER</code><a class="headerlink" href="#cortex.saver.saver.MQ_TO_DB_DRIVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#cortex.saver.saver.JsonToMongo" title="cortex.saver.saver.JsonToMongo"><code class="xref py py-class docutils literal"><span class="pre">cortex.saver.saver.JsonToMongo</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cortex.saver.saver.MongoDriver">
+<em class="property">class </em><code class="descclassname">cortex.saver.saver.</code><code class="descname">MongoDriver</code><span class="sig-paren">(</span><em>host</em>, <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.debug_delete_id">
+<code class="descname">debug_delete_id</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.debug_delete_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.debug_save">
+<code class="descname">debug_save</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.debug_save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.fill_search_dic">
+<code class="descname">fill_search_dic</code><span class="sig-paren">(</span><em>dic</em>, <em>datetime</em>, <em>snapshotId</em>, <em>feelings</em>, <em>pose</em>, <em>color_image</em>, <em>depth_image</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.fill_search_dic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.fill_user_info_dic">
+<code class="descname">fill_user_info_dic</code><span class="sig-paren">(</span><em>dic</em>, <em>userId</em>, <em>username</em>, <em>birthday</em>, <em>gender</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.fill_user_info_dic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.first_one">
+<code class="descname">first_one</code><span class="sig-paren">(</span><em>current_snapshot_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.first_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>this function is applied after every data recieved from
+saver that need to be saved, he first cheks if some other data 
+has already arrive that belongs in the same snapshot, by checking
+if someone else has already put the unique snapshot id which is
+user_id#datetime of that snapshot</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.load_color_image_result">
+<code class="descname">load_color_image_result</code><span class="sig-paren">(</span><em>user_id</em>, <em>snapshot_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.load_color_image_result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.load_depth_image_result">
+<code class="descname">load_depth_image_result</code><span class="sig-paren">(</span><em>user_id</em>, <em>snapshot_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.load_depth_image_result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.load_feelings_result">
+<code class="descname">load_feelings_result</code><span class="sig-paren">(</span><em>user_id</em>, <em>snapshot_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.load_feelings_result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.load_pose_result">
+<code class="descname">load_pose_result</code><span class="sig-paren">(</span><em>user_id</em>, <em>snapshot_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.load_pose_result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.load_user_info">
+<code class="descname">load_user_info</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.load_user_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.load_user_snapshot">
+<code class="descname">load_user_snapshot</code><span class="sig-paren">(</span><em>user_id</em>, <em>snapshot_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.load_user_snapshot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.load_user_snapshots_list">
+<code class="descname">load_user_snapshots_list</code><span class="sig-paren">(</span><em>user_id</em>, <em>datetime=0</em>, <em>snapshotId=0</em>, <em>feelings=0</em>, <em>pose=0</em>, <em>color_image=0</em>, <em>depth_image=0</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.load_user_snapshots_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.load_users">
+<code class="descname">load_users</code><span class="sig-paren">(</span><em>userId=0</em>, <em>username=0</em>, <em>birthday=0</em>, <em>gender=0</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.load_users" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parameters indicate which info of users to return, this function is used both by
+api and gui modules.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>data_name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>this function receives a data_name to be save and dictionary of
+that data, after being converted into the relevant-expected format (dictionary)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.validate_snapshot_document">
+<code class="descname">validate_snapshot_document</code><span class="sig-paren">(</span><em>user_id</em>, <em>datetime</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.validate_snapshot_document" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function makes sure that the current snapshot document is allocated inside
+the array of the snapshot of the relevant user. the “allocation” should be applied whenever
+the “length” of the document retreieved from the server are of length 1. If it is of length 2
+that means that someone has already allocated a dictionariy depiciting the current snapshot with “datetime” 
+already in it. that is the protocol.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoDriver.validate_user_document">
+<code class="descname">validate_user_document</code><span class="sig-paren">(</span><em>user_info_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoDriver.validate_user_document" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function inserts the user ID and user information (metadata) if necessary.
+If a user’s document does not already exist from previously entered snapshots,
+this functions creates it utilizing the upsert flag in update_one function.
+if the users document already exists (i.e, a document with _id={the users’s ID} along with
+“user_info”: {dictionary of User’s metadata}), the function doesn’t do anything.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cortex.saver.saver.MongoToJson">
+<em class="property">class </em><code class="descclassname">cortex.saver.saver.</code><code class="descname">MongoToJson</code><a class="headerlink" href="#cortex.saver.saver.MongoToJson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This driver converts from DB format to python dictionary for the purpose of API.
+in our cause, this converting-driver expects cursor of MONGODB type, and processes them
+according to python-dictionary</p>
+<dl class="method">
+<dt id="cortex.saver.saver.MongoToJson.convert_user_info">
+<code class="descname">convert_user_info</code><span class="sig-paren">(</span><em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoToJson.convert_user_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Here we don’t process much, the resut of the MongoDriver’s loa_user_info is already a dictionary.
+we just need to get rid of the header and retreive the nested dictionary only.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoToJson.convert_user_snapshot">
+<code class="descname">convert_user_snapshot</code><span class="sig-paren">(</span><em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoToJson.convert_user_snapshot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoToJson.convert_user_snapshots_list">
+<code class="descname">convert_user_snapshots_list</code><span class="sig-paren">(</span><em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoToJson.convert_user_snapshots_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoToJson.convert_users_list">
+<code class="descname">convert_users_list</code><span class="sig-paren">(</span><em>cursor</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoToJson.convert_users_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.saver.saver.MongoToJson.result_easy_convert">
+<code class="descname">result_easy_convert</code><span class="sig-paren">(</span><em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.MongoToJson.result_easy_convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is somewhat-general in the DB-TO-PYTHON-DICTIONARY for results in this 
+convert driver. the data by nature is a dictionary of values, so it just returns the
+relevant data from the returned struture (also python-dict) of the mongoDriver for it
+to be used by the api_get methods</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="cortex.saver.saver.find_db_driver">
+<code class="descclassname">cortex.saver.saver.</code><code class="descname">find_db_driver</code><span class="sig-paren">(</span><em>furl_object</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver.find_db_driver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-cortex.saver.saver_main">
+<span id="cortex-saver-saver-main-module"></span><h2>cortex.saver.saver_main module<a class="headerlink" href="#module-cortex.saver.saver_main" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="cortex.saver.saver_main.main_saver_callback">
+<code class="descclassname">cortex.saver.saver_main.</code><code class="descname">main_saver_callback</code><span class="sig-paren">(</span><em>channel</em>, <em>method</em>, <em>properties</em>, <em>body</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver_main.main_saver_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>every parser sticked his information in his dictionary under the
+key of his name, which is also the name of the exchange he publishes at</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cortex.saver.saver_main.run_saver_as_microservice">
+<code class="descclassname">cortex.saver.saver_main.</code><code class="descname">run_saver_as_microservice</code><span class="sig-paren">(</span><em>db_url</em>, <em>mq_url</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.saver.saver_main.run_saver_as_microservice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-cortex.saver">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cortex.saver" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Raghad Zeidan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/cortex.saver.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

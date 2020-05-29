@@ -1,0 +1,187 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cortex.utils package &#8212; Advanced System Design Project  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="cortex-utils-package">
+<h1>cortex.utils package<a class="headerlink" href="#cortex-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-cortex.utils.connection">
+<span id="cortex-utils-connection-module"></span><h2>cortex.utils.connection module<a class="headerlink" href="#module-cortex.utils.connection" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cortex.utils.connection.Connection">
+<em class="property">class </em><code class="descclassname">cortex.utils.connection.</code><code class="descname">Connection</code><span class="sig-paren">(</span><em>soc</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.connection.Connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="cortex.utils.connection.Connection.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.connection.Connection.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="cortex.utils.connection.Connection.connect">
+<em class="property">classmethod </em><code class="descname">connect</code><span class="sig-paren">(</span><em>host</em>, <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.connection.Connection.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>this class method opens a socket to the specifide host and port,
+and returns a Connection object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.utils.connection.Connection.receive">
+<code class="descname">receive</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.connection.Connection.receive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.utils.connection.Connection.send">
+<code class="descname">send</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.connection.Connection.send" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cortex.utils.hello">
+<span id="cortex-utils-hello-module"></span><h2>cortex.utils.hello module<a class="headerlink" href="#module-cortex.utils.hello" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cortex.utils.hello.Hello">
+<em class="property">class </em><code class="descclassname">cortex.utils.hello.</code><code class="descname">Hello</code><span class="sig-paren">(</span><em>user_id</em>, <em>user_name</em>, <em>birthdate</em>, <em>gender</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.hello.Hello" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cortex.utils.listener">
+<span id="cortex-utils-listener-module"></span><h2>cortex.utils.listener module<a class="headerlink" href="#module-cortex.utils.listener" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cortex.utils.listener.Listener">
+<em class="property">class </em><code class="descclassname">cortex.utils.listener.</code><code class="descname">Listener</code><span class="sig-paren">(</span><em>port</em>, <em>host='0.0.0.0'</em>, <em>backlog=1000</em>, <em>reuseaddr=True</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.listener.Listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="cortex.utils.listener.Listener.accept">
+<code class="descname">accept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.listener.Listener.accept" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.utils.listener.Listener.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.listener.Listener.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.utils.listener.Listener.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.listener.Listener.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cortex.utils.render">
+<span id="cortex-utils-render-module"></span><h2>cortex.utils.render module<a class="headerlink" href="#module-cortex.utils.render" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="cortex.utils.render.read_bytes">
+<code class="descclassname">cortex.utils.render.</code><code class="descname">read_bytes</code><span class="sig-paren">(</span><em>fd</em>, <em>data_size</em>, <em>return_as=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.render.read_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="cortex.utils.render.render_from_bytes">
+<code class="descclassname">cortex.utils.render.</code><code class="descname">render_from_bytes</code><span class="sig-paren">(</span><em>byytes</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.render.render_from_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="cortex.utils.render.render_to_bytes">
+<code class="descclassname">cortex.utils.render.</code><code class="descname">render_to_bytes</code><span class="sig-paren">(</span><em>string</em>, <em>num_bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.utils.render.render_to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-cortex.utils.snapshot">
+<span id="cortex-utils-snapshot-module"></span><h2>cortex.utils.snapshot module<a class="headerlink" href="#module-cortex.utils.snapshot" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cortex.utils.snapshot.Snapshot">
+<em class="property">class </em><code class="descclassname">cortex.utils.snapshot.</code><code class="descname">Snapshot</code><a class="headerlink" href="#cortex.utils.snapshot.Snapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cortex.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cortex.utils" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Raghad Zeidan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/cortex.utils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

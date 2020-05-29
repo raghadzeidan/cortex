@@ -1,0 +1,233 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cortex.server package &#8212; Advanced System Design Project  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="cortex-server-package">
+<h1>cortex.server package<a class="headerlink" href="#cortex-server-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cortex.server.server_utils.html">cortex.server.server_utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cortex.server.server_utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cortex.server.server_utils.html#module-cortex.server.server_utils.cortex_server_pb2">cortex.server.server_utils.cortex_server_pb2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cortex.server.server_utils.html#module-cortex.server.server_utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-cortex.server.server">
+<span id="cortex-server-server-module"></span><h2>cortex.server.server module<a class="headerlink" href="#module-cortex.server.server" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cortex.server.server.CortextServer">
+<em class="property">class </em><code class="descclassname">cortex.server.server.</code><code class="descname">CortextServer</code><span class="sig-paren">(</span><em>request</em>, <em>client_address</em>, <em>server</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.CortextServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">http.server.BaseHTTPRequestHandler</span></code></p>
+<dl class="method">
+<dt id="cortex.server.server.CortextServer.do_GET">
+<code class="descname">do_GET</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.CortextServer.do_GET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.server.server.CortextServer.do_POST">
+<code class="descname">do_POST</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.CortextServer.do_POST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.server.server.CortextServer.get_unique_biscuit">
+<code class="descname">get_unique_biscuit</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.CortextServer.get_unique_biscuit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cortex.server.server.DEFAULT_DRIVER">
+<code class="descclassname">cortex.server.server.</code><code class="descname">DEFAULT_DRIVER</code><a class="headerlink" href="#cortex.server.server.DEFAULT_DRIVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#cortex.server.server.JsonPrepareDriver" title="cortex.server.server.JsonPrepareDriver"><code class="xref py py-class docutils literal"><span class="pre">cortex.server.server.JsonPrepareDriver</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cortex.server.server.JsonPrepareDriver">
+<em class="property">class </em><code class="descclassname">cortex.server.server.</code><code class="descname">JsonPrepareDriver</code><span class="sig-paren">(</span><em>biscuit</em>, <em>snapshot_data</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.JsonPrepareDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This class takes a snapshot and prepares its format from the client-server format
+(project-chosen protocol which is protobuf) and prepares it as a json format before 
+sending it through mq</p>
+<dl class="staticmethod">
+<dt id="cortex.server.server.JsonPrepareDriver.get_user_id">
+<em class="property">static </em><code class="descname">get_user_id</code><span class="sig-paren">(</span><em>user_data</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.JsonPrepareDriver.get_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.server.server.JsonPrepareDriver.prepare_color_image">
+<code class="descname">prepare_color_image</code><span class="sig-paren">(</span><em>to_publish</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.JsonPrepareDriver.prepare_color_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>saves color_image bytes in VOLUME/UDER_ID/DATETIME/color_image_data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.server.server.JsonPrepareDriver.prepare_depth_image">
+<code class="descname">prepare_depth_image</code><span class="sig-paren">(</span><em>to_publish</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.JsonPrepareDriver.prepare_depth_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>saves color_image bytes in VOLUME/UDER_ID/DATETIME/depth_image_data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.server.server.JsonPrepareDriver.prepare_feelings">
+<code class="descname">prepare_feelings</code><span class="sig-paren">(</span><em>to_publish</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.JsonPrepareDriver.prepare_feelings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.server.server.JsonPrepareDriver.prepare_pose">
+<code class="descname">prepare_pose</code><span class="sig-paren">(</span><em>to_publish</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.JsonPrepareDriver.prepare_pose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.server.server.JsonPrepareDriver.prepare_to_publish">
+<code class="descname">prepare_to_publish</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.JsonPrepareDriver.prepare_to_publish" title="Permalink to this definition">¶</a></dt>
+<dd><p>this is the main function of the driver. it takes the client-server protocol format 
+and prepares it to json format before sending to mq.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.server.server.JsonPrepareDriver.prepare_user_info">
+<code class="descname">prepare_user_info</code><span class="sig-paren">(</span><em>to_publish</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.JsonPrepareDriver.prepare_user_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.server.server.JsonPrepareDriver.stringify_datetime">
+<code class="descname">stringify_datetime</code><span class="sig-paren">(</span><em>datetime</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.JsonPrepareDriver.stringify_datetime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cortex.server.server.ThreadedHTTPServer">
+<em class="property">class </em><code class="descclassname">cortex.server.server.</code><code class="descname">ThreadedHTTPServer</code><span class="sig-paren">(</span><em>server_address</em>, <em>RequestHandlerClass</em>, <em>bind_and_activate=True</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.ThreadedHTTPServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">socketserver.ThreadingMixIn</span></code>, <code class="xref py py-class docutils literal"><span class="pre">http.server.HTTPServer</span></code></p>
+<p>Handle requests in a separate thread.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cortex.server.server.biscuit_url">
+<code class="descclassname">cortex.server.server.</code><code class="descname">biscuit_url</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.biscuit_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns biscuit from URL, NONE if not legal URL</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cortex.server.server.check_bad_parser_error">
+<code class="descclassname">cortex.server.server.</code><code class="descname">check_bad_parser_error</code><span class="sig-paren">(</span><em>parser_name</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.check_bad_parser_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="cortex.server.server.get_available_parsers">
+<code class="descclassname">cortex.server.server.</code><code class="descname">get_available_parsers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.get_available_parsers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="cortex.server.server.run_server">
+<code class="descclassname">cortex.server.server.</code><code class="descname">run_server</code><span class="sig-paren">(</span><em>host</em>, <em>port</em>, <em>mq_url</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.server.server.run_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>The protocol is an HTTP protocol between the server and his clinets.
+The protocol is as follows:
+Client first sends a /config GET request in order to received the available
+parsers in the framework(some client may not want to connect if available
+parsers is not suitable). if client chooses to connect, he then sends a /hello
+POST request, inside it there is the  user’s datathe server then sends
+an OK response along with a biscuit, which is a unique number (user_id
+cont with a random 8-digit number) that then the clientcan POST
+/hello/biscuit/snapshot request in order to send snapshot (starts streaming
+snapshot in his own unique path). this is just for security measure,
+to prevent from 3rd parites to simply do a POST user_id/snapshot with
+a specific user_id biscuit are saved in a simple dictionary at server’s
+end.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cortex.server">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cortex.server" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Raghad Zeidan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/cortex.server.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

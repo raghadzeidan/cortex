@@ -1,0 +1,188 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cortex.mq package &#8212; Advanced System Design Project  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="cortex-mq-package">
+<h1>cortex.mq package<a class="headerlink" href="#cortex-mq-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-cortex.mq.mq">
+<span id="cortex-mq-mq-module"></span><h2>cortex.mq.mq module<a class="headerlink" href="#module-cortex.mq.mq" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cortex.mq.mq.MQer">
+<em class="property">class </em><code class="descclassname">cortex.mq.mq.</code><code class="descname">MQer</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.MQer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="cortex.mq.mq.MQer.connect_to_consume_function">
+<code class="descname">connect_to_consume_function</code><span class="sig-paren">(</span><em>queue_name</em>, <em>callback_function</em>, <em>auto_ack=True</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.MQer.connect_to_consume_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.MQer.create_exchange">
+<code class="descname">create_exchange</code><span class="sig-paren">(</span><em>exchange</em>, <em>exchange_type</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.MQer.create_exchange" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.MQer.create_queue">
+<code class="descname">create_queue</code><span class="sig-paren">(</span><em>queue_name</em>, <em>exc=True</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.MQer.create_queue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.MQer.publish">
+<code class="descname">publish</code><span class="sig-paren">(</span><em>exchange</em>, <em>key</em>, <em>body</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.MQer.publish" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.MQer.start_consuming">
+<code class="descname">start_consuming</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.MQer.start_consuming" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.MQer.subscribe_to_exchange">
+<code class="descname">subscribe_to_exchange</code><span class="sig-paren">(</span><em>exchange_name</em>, <em>queue_name=''</em>, <em>return_queue=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.MQer.subscribe_to_exchange" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cortex.mq.mq.RabbitDriver">
+<em class="property">class </em><code class="descclassname">cortex.mq.mq.</code><code class="descname">RabbitDriver</code><span class="sig-paren">(</span><em>host</em>, <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.RabbitDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This is our supported MQ, rabbit MQ driver.
+the way this infrastructure works is similiar to readers.
+drivers have to implement: create_exchange, publish, consume etc…
+chose relatively general names, for potential logic in MQer</p>
+<dl class="method">
+<dt id="cortex.mq.mq.RabbitDriver.connect_to_function">
+<code class="descname">connect_to_function</code><span class="sig-paren">(</span><em>q_name</em>, <em>callback_func</em>, <em>auto_ackk</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.RabbitDriver.connect_to_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.RabbitDriver.create_exchange">
+<code class="descname">create_exchange</code><span class="sig-paren">(</span><em>exchange_name</em>, <em>exchange_t</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.RabbitDriver.create_exchange" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.RabbitDriver.create_queue">
+<code class="descname">create_queue</code><span class="sig-paren">(</span><em>q_name</em>, <em>exclussive</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.RabbitDriver.create_queue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.RabbitDriver.publish">
+<code class="descname">publish</code><span class="sig-paren">(</span><em>ex</em>, <em>key</em>, <em>bod</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.RabbitDriver.publish" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.RabbitDriver.should_return">
+<code class="descname">should_return</code><span class="sig-paren">(</span><em>function</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.RabbitDriver.should_return" title="Permalink to this definition">¶</a></dt>
+<dd><p>this function implies wether we should return a value or not in this specific mq implementation
+this is used when two different MQ operations are related to one  another
+like subscribe_to_change and start_consuming</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.RabbitDriver.start_consuming">
+<code class="descname">start_consuming</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.RabbitDriver.start_consuming" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cortex.mq.mq.RabbitDriver.subscribe_to_exchange">
+<code class="descname">subscribe_to_exchange</code><span class="sig-paren">(</span><em>exchange_name</em>, <em>q_name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.RabbitDriver.subscribe_to_exchange" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="cortex.mq.mq.find_mqdriver">
+<code class="descclassname">cortex.mq.mq.</code><code class="descname">find_mqdriver</code><span class="sig-paren">(</span><em>furl_object</em><span class="sig-paren">)</span><a class="headerlink" href="#cortex.mq.mq.find_mqdriver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-cortex.mq">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cortex.mq" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Raghad Zeidan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/cortex.mq.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
