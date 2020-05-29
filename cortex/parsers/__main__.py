@@ -2,7 +2,7 @@ from .color_image_parser import color_image_parser_main
 from .feelings_parser import feelings_parser_main
 from .pose_parser import pose_parser_main
 from .depth_image_parser import depth_image_parser_main
-from .parsers_main import run_parser
+from . import run_parser
 import click
 
 @click.group()
