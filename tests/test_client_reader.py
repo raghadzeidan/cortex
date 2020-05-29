@@ -24,8 +24,6 @@ def read_path(tmp_path):
 #	assert 1==2
 
 
-def test_my_client(httpserver): # httpserver is a pytest fixture which starts the server
-    # set up the server to serve /foobar with the json
+def test_my_client(httpserver): 
     httpserver.expect_request("/foobar").respond_with_json({"foo": "bar"})
-    # check that the request is served
     assert requests.get(httpserver.url_for("/foobar")).json() == {'foo': 'bar'}
