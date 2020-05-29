@@ -1,4 +1,4 @@
-# first_project
+# Advanced System Design - Cortex Project
 Welcome to the Github page of the Advanced System Design project by Raghad Zeidan.
 Quickstart explanation:
   The final project includes a client, which streams cognition snapshots to a server, 
