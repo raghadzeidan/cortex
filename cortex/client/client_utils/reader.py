@@ -35,6 +35,9 @@ class ProtoReaderDriver:
 		snapshot = Snapshot()
 		snapshot.ParseFromString(buff)
 		return snapshot
+		
+	def read_all():
+		return self.fd.read()
 	def next_snapshot_exists(self):
 		'''this function returns True if there exists another snapshot to read, while at the same
 		time putting in the instance field that length in bytes (after reading it), if not
@@ -94,6 +97,10 @@ class Reader:
 		
 		self.reader_driver = find_reader_driver(ffurl)(self.fd) #initiating reader_driver with our file-descriptor
 		self.user = self.reader_driver.read_user_information()
+		
+	def read_all(self):
+		'''debugging purposes'''
+		return self.reader_driver.read_all()
 		
 	@property
 	def user_id(self):

@@ -4,7 +4,7 @@ from ..saver import DatabaseDriver
 app = flask.Flask(__name__)
 term = Terminal()
 loader = None
-quantity = 5
+quantity = 10
 max_posts = 1000 #a reasonable maximum of snapshots to load
 
 @app.route('/')

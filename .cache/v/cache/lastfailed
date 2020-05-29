@@ -1,0 +1,7 @@
+{
+  "tests/test_client_q1.py": true, 
+  "tests/test_client_reader.py": true, 
+  "tests/test_connection.py": true, 
+  "tests/test_listener.py": true, 
+  "tests/test_thought.py": true
+}
