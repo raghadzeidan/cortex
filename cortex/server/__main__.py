@@ -11,7 +11,7 @@ def cli():
 @click.argument('mq')
 def cli_run_server(host, port,mq ):
     print(mq)
-    run_server(host, port,mq)
+    run_server(host, port,mq_url=mq)
 
 
 

@@ -1,12 +1,11 @@
 from .cortex_pb2 import 	User, Snapshot, Pose, ColorImage, DepthImage, Feelings
 from PIL import Image
 import gzip
-import logging
 from blessings import Terminal
 import datetime as dt
 from furl import furl
 
-INT_SIZE = 4
+INT_SIZE=4 
 term = Terminal()
 GENDERS_RMAP = {User.Gender.FEMALE:'f',User.Gender.MALE:'m', User.Gender.OTHER:'o'}
 UNCOMPRESSED = 'uncompressed'
@@ -32,16 +31,13 @@ class ProtoReaderDriver:
 		and then reading that many bytes and putting it in a snapshot object that was pre-defined
 		in a proto_file'''
 		snapshot_length = int.from_bytes(self.current_snapshot_length_b, byteorder="little")
-		buff = self.fd.read(snapshot_length) #TODO: consider taking less bytes at once
+		buff = self.fd.read(snapshot_length) 
 		snapshot = Snapshot()
 		snapshot.ParseFromString(buff)
 		return snapshot
 		
 	def read_all(self):
-		print("Y READING ALL")
-		print(self.fd)
 		x = self.fd.read()
-		print("INSIDE", x)
 		return self.fd.read()
 	def next_snapshot_exists(self):
 		'''this function returns True if there exists another snapshot to read, while at the same
@@ -60,14 +56,14 @@ def find_compressor(furl_object):
     comp_kind = furl_object.args['compressor']
     if comp_kind in COMPRESSORS:
         return COMPRESSORS[comp_kind]
-    logging.error('invalid URL - Reader')
+    print(term.red('invalid URL - Reader'))
     raise ValueError(f'invalid URL: Unsupported file compression file {comp_kind}')
 
 def find_reader_driver(furl_object):
     driver = furl_object.scheme
     if driver in READER_DRIVERS:
         return READER_DRIVERS[driver]
-    logging.error('invalid URL - Reader')
+    print(term.red('invalid URL - Reader'))
     raise ValueError(f'invalid URL: Unsupported reading file format {driver}')
     
 class Reader:
@@ -87,7 +83,6 @@ class Reader:
 	
 	def open_file(self):
 		if self.compressor == UNCOMPRESSED:
-			print("RAGHD UNCOMPRESSED")
 			self.fd = open(self.path, "rb")
 		else:
 			self.fd = self.compressor.open(self.path, "rb")

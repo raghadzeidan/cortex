@@ -1,7 +1,7 @@
 import flask
 import json
 from blessings import Terminal
-from ..saver import DatabaseDriver
+from ..common import DatabaseDriver
 term = Terminal()
 app = flask.Flask(__name__)
 loader = None
@@ -42,7 +42,6 @@ def get_snapshot_result(uid, snapshotId, result_name):
 @app.route('/users/<string:uid>/snapshots/<string:snapshotId>/<string:result_name>/data')
 def get_image_data(uid, snapshotId, result_name):
 	results_dic = loader.load_user_result(uid,snapshotId, result_name)
-	print(term.red_on_white(result_name + str(results_dic)))
 	if result_name == "color-image": #name inconsistency
 		path = results_dic['color_image']
 	elif result_name == 'depth-image':

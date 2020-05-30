@@ -9,22 +9,21 @@ import click
 def cli():
     pass
 
-#@cli.command('parse')
-#@click.argument('parser_name') #help = 'this should have the parser name that we want to parse this specific data using')
-#@click.argument('data', 'this should have the data that we want to parse')
-#@click.option('redirect', 'this is optional, if you want to redirect the data to a specific file')
-#def parse(parser_name, data_path, redirect=None):#this shit is temporaray, this should call to other function defined in main parser function in parser package
-#	pass
-#    with open(data_path,'r') as f:
-#		data = run_parser(f.read())
-#	if redirect:
-#		with open(redirect, 'w') as f:
-#			f.write(data)
-#	else:
-#		print(data)
+@cli.command('parse')
+@click.option('--redirect', default=None, help='this is optional, if you want to redirect the data to a specific file')
+@click.argument('parser_name')
+@click.argument('data')
+def parse(parser_name, data_path, redirect):
+	with open(data_path,'r') as f:
+		data = run_parser(f.read())
+	if redirect is not None:
+		with open(redirect, 'w') as f:
+			f.write(data)
+	else:
+		print(data)
 
 @cli.command('run-parser')
-@click.argument('parser_name')#,help='this should have the parser name that we want to parse this specific data using')
+@click.argument('parser_name')
 @click.argument('mq')
 def microservice_run_parser(parser_name, mq):
 	print(mq)

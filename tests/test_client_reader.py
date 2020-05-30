@@ -1,7 +1,7 @@
 import pytest
 import gzip
 import requests
-from cortex.client.client_utils import Reader, UNCOMPRESSED
+from cortex.server import run_server
 from cortex.client import FILE_FORMAT, upload_sample
 
 
@@ -11,19 +11,11 @@ def read_path(tmp_path):
 	f = tmp_path / 'file.gz'
 	return str(f)
 
-#def test_f(read_path):
-#	print(read_path)
-#	y = ''
-#	with open(read_path, "wb") as f:
-#		f.write(USER_BYTES)
-#	print(y)
-#	path_suit = f'{FILE_FORMAT}{read_path}/?compressor=gzip'
-#	reader = Reader(path_suit)
-#	x = reader.user
-#	print(x)
-#	assert 1==2
 
 
 def test_my_client(httpserver): 
     httpserver.expect_request("/foobar").respond_with_json({"foo": "bar"})
+    run_server(host='127.0.0.1', port=8000, publish=print)
     assert requests.get(httpserver.url_for("/foobar")).json() == {'foo': 'bar'}
+
+

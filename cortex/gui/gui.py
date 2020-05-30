@@ -1,6 +1,6 @@
 import flask
 from blessings import Terminal
-from ..saver import DatabaseDriver
+from ..common import DatabaseDriver
 app = flask.Flask(__name__)
 term = Terminal()
 loader = None
@@ -14,14 +14,13 @@ def main():
 @app.route('/browse')
 def  browse():
 	list_users = loader.load_users() #empty input includes all fields as wanted.
-	print(term.blue_on_white(str(list_users)))
 	return flask.render_template('browse.html', list_users=list_users)
 	
 	
 @app.route("/users/<uid>_<username>", methods=["GET","POST"])
 def profile(uid,username):
 	if flask.request.method=="POST":
-		print("ZZZZZZZZZZZZZZZZZZZZZZZ",flask.request.form)
+		print("Search not yet implemented.")
 	return flask.render_template('profile_template.html', uid=uid, username=username)
 		
 @app.route("/load/users/<uid>_<username>")
@@ -29,7 +28,6 @@ def load(uid,username):
 	'''This function returns a specified interval of the user's snapshots, which then are displayed on the screen
 	dynamically '''
 	db = loader.load_user_snapshots_list(str(uid), datetime=1, snapshotId=1, feelings=1, pose=1, color_image=1, depth_image=1)
-	print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	res = None
 	if flask.request.args:
 		counter = int(flask.request.args.get("c"))
@@ -43,7 +41,6 @@ def load(uid,username):
 		else:
 			print(f"Returning posts {counter} to {counter + quantity}")
 			res = flask.make_response(flask.jsonify(db[counter: counter + quantity]), 200)
-	print(res.get_data())
 	return res
 	
 
@@ -62,7 +59,6 @@ def get_snapshot_result(uid, snapshotId, result_name):
 def get_image_data(uid, username, datetime, result_name):
 	'''To get images as a get request from our server, which we then render on display. '''
 	results_dic = loader.load_user_result(uid,f"{uid}_{datetime}", result_name)
-	print(term.red_on_white(result_name + str(results_dic)))
 	if result_name == "color-image": 
 		path = results_dic['color_image']
 	elif result_name == 'depth-image':
@@ -78,15 +74,11 @@ def get_snapshot_of_user(uid, username, datetime):
 	pose_results_dic = loader.load_user_result(uid,f"{uid}_{datetime}", "pose")['pose']
 	feelings_results_dic = loader.load_user_result(uid,f"{uid}_{datetime}", "feelings")['feelings']
 	modify_for_html(feelings_results_dic)
-	print("ZZ"+ str(feelings_results_dic))
 	return flask.render_template("snapshot_template.html", uid=uid, username=username, datetime=datetime, pose_dic = pose_results_dic, feelings_dic=feelings_results_dic)
 
 def modify_for_html(feelings_dic):
 	'''This function modifies the feelings dic for html purposes. '''
-	print(term.red_on_white(str(feelings_dic)))
 	for key in feelings_dic:
-		print(term.blue_on_white(str(key)))
-		print(term.blue_on_white(str(feelings_dic[key])))
 		feelings_dic[key]=feelings_dic[key]*1000
 	
 def run_server(host, port, db_url):

@@ -6,7 +6,6 @@ def find_mqdriver(furl_object):
 	mq = furl_object.scheme
 	if mq in MQ_DRIVERS:
 		return mq
-	logging.error('invalud MQ URL - MQer')
 	raise TypeError(f'Unsupported message queue: {mq}')
 	
 class RabbitDriver():

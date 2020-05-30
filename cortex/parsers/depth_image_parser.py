@@ -10,7 +10,6 @@ term = blessings.Terminal()
 
 @subscribe('depth_image')
 def parse_that_fucking_depth(data):
-	print(term.red_on_white(str(data)))
 	dic = json.loads(data)
 	publish_depth = {}
 	publish_depth['user'] = dic['user']
@@ -31,20 +30,18 @@ def parse_that_fucking_depth(data):
 def depth_image_parser_callback(channel, method, properties, body):
 	'''a callback for the parsing feelings function.
 	PROJECT: this allows decoupiling between MQ and actual parsing function'''
-	#extracting from user+snapshot (just like run_parser)
-	#consider making them one code
-	#extracting..
+	print(term.green_on_white("Depth Image parsing function triggered."))
 	to_publish=parse_that_fucking_depth(body)
+	print(term.green_on_white("Depth Image processed and republishing to message queue"))
 	channel.exchange_declare('depth_image', exchange_type='fanout')
 	channel.basic_publish(exchange='depth_image', routing_key='', body=to_publish)
 
 
 def depth_image_parser_main(mq_url):#Consider the initialization to be one-for-all
-	print(mq_url)
 	mq = MQer(mq_url)
 	mq.create_exchange('parsers', exchange_type = 'fanout')
 	queue_name = mq.subscribe_to_exchange('parsers', return_queue = True) #we have a new queue connected to the exchange
 	mq.connect_to_consume_function(queue_name, callback_function=depth_image_parser_callback)
-	print('depth consuming...')
+	print(f'depth consuming from {mq_url}...')
 	mq.start_consuming()
 	
