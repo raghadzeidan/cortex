@@ -9,7 +9,7 @@ import datetime as dt
 from ..mq import MQer
 from blessings import Terminal
 from google.protobuf.json_format import MessageToDict
-import matploblib
+import matplotlib
 matplotlib.use("Agg")
 import numpy as np
 from http.server import HTTPServer, BaseHTTPRequestHandler

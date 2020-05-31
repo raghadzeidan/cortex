@@ -13,7 +13,6 @@ def parse_that_fucking_depth(data):
 	publish_depth = {}
 	publish_depth['user'] = dic['user']
 	publish_depth['datetime'] = dic['datetime']
-	
 	depth_path = dic['depth_image']['data_path']
 	height = dic['depth_image']['height']
 	width = dic['depth_image']['width']
