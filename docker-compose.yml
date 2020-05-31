@@ -1,0 +1,9 @@
+version: "3"
+services:
+    server:
+        build: ./cortex/api
+        volumes: 
+            - ./cortex/api:/usr/src/app
+        ports:
+            - 5001:5000
+        
