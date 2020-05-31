@@ -197,6 +197,8 @@ class DatabaseDriver:
 		furl_object = furl(url)
 		port = furl_object.port
 		host = furl_object.host
+		print("DEBUG RAGHD", host)
+		print("DEBUG RAGHD", port)
 		driver_name = find_db_driver(furl_object)
 		DBDriver = DB_DRIVERS[driver_name]
 		self.db_driver = DBDriver(host, port)

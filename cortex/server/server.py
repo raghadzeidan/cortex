@@ -9,6 +9,8 @@ import datetime as dt
 from ..mq import MQer
 from blessings import Terminal
 from google.protobuf.json_format import MessageToDict
+import matploblib
+matplotlib.use("Agg")
 import numpy as np
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from socketserver import ThreadingMixIn
@@ -66,7 +68,7 @@ class JsonPrepareDriver():
 		self.user = TheUser()
 		user_data = USERS_INFO[biscuit]
 		self.user.ParseFromString(user_data)
-		self.volume_path = '/home/user/Desktop/volume'
+		self.volume_path = '/volume/'
 	def stringify_datetime(self, datetime):
 		return str(dt.datetime.fromtimestamp(datetime / 1e3))
 		
@@ -103,7 +105,7 @@ class JsonPrepareDriver():
 		'''saves color_image bytes in VOLUME/UDER_ID/DATETIME/color_image_data '''
 		print(term.green_on_black(f'DEBUG RAGHD: datetime: {self.snapshot.datetime}'))
 		datetime = self.snapshot.datetime
-		path_suffix = f'/color_images/bytes/{self.user.user_id}_{datetime}'
+		path_suffix = f'color_bytes_{self.user.user_id}_{datetime}'
 		unique_img_path = self.volume_path + path_suffix
 		with open(unique_img_path, 'wb') as f:
 			f.write(self.snapshot.color_image.data)
@@ -124,7 +126,7 @@ class JsonPrepareDriver():
 	def prepare_depth_image(self, to_publish):
 		'''saves color_image bytes in VOLUME/UDER_ID/DATETIME/depth_image_data '''
 		datetime = self.snapshot.datetime
-		path_suffix = f'/depth_images/bytes/{self.user.user_id}_{datetime}.npy'
+		path_suffix = f'depth_bytes_{self.user.user_id}_{datetime}.npy'
 		unique_depth_path = self.volume_path + path_suffix
 		depth_dict = MessageToDict(self.snapshot.depth_image)
 		float_array = depth_dict['data']

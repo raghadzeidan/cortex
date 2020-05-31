@@ -1,6 +1,6 @@
 import pytest
 import pymongo
-from cortex.saver import DatabaseDriver
+from cortex.common import DatabaseDriver
 
 PORT=27017
 HOST="127.0.0.1"
@@ -29,8 +29,9 @@ def mongo_driver():
 	try:
 		yield driver
 	finally:
+		print('test')
 		#don't want to garbage our db
-		driver.debug_delete_id(MOCK_ID)
+		#driver.debug_delete_id(MOCK_ID)
 	
 def test_saver_user_info(mongo_driver):
 	result = mongo_driver.load_user_info(MOCK_ID)

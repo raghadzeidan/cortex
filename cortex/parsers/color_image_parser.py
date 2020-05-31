@@ -19,15 +19,20 @@ def parse_that_fucking_image(data):
 	#processing of color_image
 	image_bytes_path = dic['color_image']['data_path']
 	width, height = dic['color_image']['width'], dic['color_image']['height']
+	print(1)
 	with open(image_bytes_path, 'rb') as f:
+		print(1.5)
 		image_bytes = f.read()
 	image = Image.frombytes('RGB', (width, height), (image_bytes))
+	print(2)
 	user_id = dic['user']['userId']
 	datetime = dic['datetime']
-	save_path = f'/home/user/Desktop/volume/color_images/images/{user_id}_{datetime}.png'
+	save_path = f'/volume/color_images_{user_id}_{datetime}.png'
 	image.save(save_path)
-	imgplot = plt.imshow(mpimg.imread(save_path))
+	print(3)
+	print(4)
 	plt.close()
+	print(5)
 	color_image_publish['color_image'] = save_path
 	return json.dumps(color_image_publish)
 		
