@@ -29,9 +29,9 @@ $ pytest tests/
 ```
 
 # Quickstart
-Use docker-compose command to run everything together at once.
+Run the run-pipeline.sh script that is found in the main directory.
 ```
-$ docker-compose up -d
+$ . run-pipeline.sh
 ```
 # Quickstart Explanation
   The final project includes a client, which streams cognition snapshots to a server, 
