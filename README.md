@@ -1,3 +1,4 @@
+[![Documentation Status](https://readthedocs.org/projects/cortexx/badge/?version=latest)](https://cortexx.readthedocs.io/en/latest/?badge=latest)
 # Advanced System Design - Cortex Project
 Welcome to the Github page of the Advanced System Design Project by Raghad Zeidan.
 # Prerequisites
