@@ -31,7 +31,7 @@ def mongo_driver():
 	finally:
 		print('test')
 		#don't want to garbage our db
-		#driver.debug_delete_id(MOCK_ID)
+		driver.debug_delete_id(MOCK_ID)
 	
 def test_saver_user_info(mongo_driver):
 	result = mongo_driver.load_user_info(MOCK_ID)
