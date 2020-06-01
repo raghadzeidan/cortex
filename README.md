@@ -1,4 +1,4 @@
-[![Documentation Status](https://readthedocs.org/projects/cortexx/badge/?version=latest)](https://cortexx.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/cortexx/badge/?version=latest)](https://cortexx.readthedocs.io/en/latest/?badge=latest) [![Build Status](https://travis-ci.com/raghadzeidan/cortex.svg?branch=master)](https://travis-ci.com/raghadzeidan/cortex)
 # Advanced System Design - Cortex Project
 Welcome to the Github page of the Advanced System Design Project by Raghad Zeidan.
 # Prerequisites
