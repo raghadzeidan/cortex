@@ -24,6 +24,7 @@ kiwisolver==1.2.0
 MarkupSafe==1.1.1
 matplotlib==3.2.1
 mock==4.0.2
+mongomock==3.19.0
 more-itertools==8.3.0
 numpy==1.18.4
 orderedmultidict==1.0.1
@@ -44,13 +45,16 @@ pyparsing==2.4.7
 pytest==5.4.2
 pytest-fixture-config==1.7.0
 pytest-httpserver==0.3.4
+pytest-mongodb==2.2.0
 pytest-server-fixtures==1.7.0
 pytest-shutil==1.7.0
 python-dateutil==2.8.1
 pytz==2020.1
+PyYAML==5.3.1
 rabbitmq==0.2.0
 requests==2.23.0
 retry==0.9.2
+sentinels==1.0.0
 six==1.15.0
 snowballstemmer==2.0.0
 Sphinx==3.0.4
