@@ -1,6 +1,6 @@
 import flask
 from blessings import Terminal
-from ..common import DatabaseDriver
+from ..saver import Saver
 app = flask.Flask(__name__)
 term = Terminal()
 loader = None
@@ -83,5 +83,5 @@ def modify_for_html(feelings_dic):
 	
 def run_server(host, port, db_url):
 	global loader
-	loader = DatabaseDriver(db_url)
+	loader = Saver(db_url)
 	app.run(host, port)

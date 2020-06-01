@@ -1,7 +1,7 @@
 import flask
 import json
 from blessings import Terminal
-from ..common import DatabaseDriver
+from ..saver import Saver
 term = Terminal()
 app = flask.Flask(__name__)
 loader = None
@@ -52,7 +52,7 @@ def get_image_data(uid, snapshotId, result_name):
 	
 def run_api_server(host, port, database_url):
 	global loader
-	loader = DatabaseDriver(database_url)
+	loader = Saver(database_url)
 	app.run(host=host,port=port)
 	
 

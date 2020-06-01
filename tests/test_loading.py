@@ -1,6 +1,6 @@
 import pytest
 import pymongo
-from cortex.common import DatabaseDriver, MongoDriver
+from cortex.saver import Saver, MongoDriver
 
 PORT=27017
 HOST="127.0.0.1"
@@ -29,7 +29,7 @@ def mongo_load_driver(mongodb, monkeypatch):
 		self.db = mongodb['cortex-db']
 		self.users = self.db.users
 	monkeypatch.setattr(MongoDriver, '__init__', mockinit)
-	driver = DatabaseDriver(f"mongodb://{HOST}:{PORT}")
+	driver = Saver(f"mongodb://{HOST}:{PORT}")
 	driver.debug_save(mock)
 	return driver
 	

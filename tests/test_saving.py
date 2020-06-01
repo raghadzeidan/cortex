@@ -1,5 +1,5 @@
 import pytest
-from cortex.common import DatabaseDriver, MongoDriver
+from cortex.saver import Saver, MongoDriver
 import json
 import pathlib
 from pymongo import MongoClient
@@ -14,7 +14,7 @@ def test_save(mongodb, monkeypatch):
         self.db = mongodb['cortex-db']
         self.users = self.db.users
     monkeypatch.setattr(MongoDriver, '__init__', mockinit)    
-    saver = DatabaseDriver('mongodb://localhost:27017')
+    saver = Saver('mongodb://localhost:27017')
     saver.save('feelings', json.dumps(mock))
     snapshot = saver.db_driver.users.find_one({'_id': MOCK_ID})
     print(snapshot)
