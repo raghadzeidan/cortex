@@ -1,6 +1,6 @@
 import pytest
 import pymongo
-from cortex.saver import DatabaseDriver
+from cortex.common import DatabaseDriver, MongoDriver
 
 PORT=27017
 HOST="127.0.0.1"
@@ -23,33 +23,31 @@ SNAPSHOT_MOCK_ID = f'{MOCK_ID}_2019-12-04 10:08:07.339000'
 
 EXPECTED_SNAPSHOT_RESULTS = {'datetime': '2019-12-04 10:08:07.339000', 'snapshotId': 'mockID_2019-12-04 10:08:07.339000', 'results': ['pose', 'depth_image', 'color_image']}
 @pytest.fixture
-def mongo_driver():
+def mongo_load_driver(mongodb, monkeypatch):
+	
+	def mockinit(self, host,port):
+		self.db = mongodb['cortex-db']
+		self.users = self.db.users
+	monkeypatch.setattr(MongoDriver, '__init__', mockinit)
 	driver = DatabaseDriver(f"mongodb://{HOST}:{PORT}")
 	driver.debug_save(mock)
-	try:
-		yield driver
-	finally:
-		#don't want to garbage our db
-		driver.debug_delete_id(MOCK_ID)
+	return driver
 	
-def test_saver_user_info(mongo_driver):
-	result = mongo_driver.load_user_info(MOCK_ID)
+def test_saver_user_info(mongo_load_driver):
+	result = mongo_load_driver.load_user_info(MOCK_ID)
 	assert result==EXPECTED_USER_INFO
-	#collection = db.test_coll
-	#test_coll.insert({'foo': 'bar'})
-	#assert test_coll.find_one()['foo'] == 'bar'
-	
-def test_saver_users(mongo_driver):
-	users = mongo_driver.load_users()
+
+def test_saver_users(mongo_load_driver):
+	users = mongo_load_driver.load_users()
 	ids = [user['userId'] for user in users]
 	assert (MOCK_ID in ids)
 	
 @pytest.mark.parametrize("f,p,c,d,expected",[(0,0,0,0,EXPECTED_SNAPSHOTS_LIST),(1,1,0,0,EXPECTED_SNAPSHOTS_FEELINGS_POSE), (0,1,1,0,EXPECTED_SNAPSHOTS_COLOR_POSE)])
-def test_load_user_snapshots_list(mongo_driver,f,p,c,d,expected):
-	result = mongo_driver.load_user_snapshots_list(MOCK_ID, feelings=f, pose=p, color_image=c, depth_image=d)
+def test_load_user_snapshots_list(mongo_load_driver,f,p,c,d,expected):
+	result = mongo_load_driver.load_user_snapshots_list(MOCK_ID, feelings=f, pose=p, color_image=c, depth_image=d)
 	assert result == expected
 	
-def test_snapshot(mongo_driver):
-	result = mongo_driver.load_user_snapshot_results(MOCK_ID, SNAPSHOT_MOCK_ID)
+def test_snapshot(mongo_load_driver):
+	result = mongo_load_driver.load_user_snapshot_results(MOCK_ID, SNAPSHOT_MOCK_ID)
 	print('z',result,'z')
 	assert result== EXPECTED_SNAPSHOT_RESULTS

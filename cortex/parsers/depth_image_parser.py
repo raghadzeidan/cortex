@@ -1,12 +1,11 @@
 from .parsers_main import subscribe
-import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib
 import pika
 from ..mq import MQer
 import json
 import blessings
 term = blessings.Terminal()
-
+import numpy as np
 
 @subscribe('depth_image')
 def parse_that_fucking_depth(data):
@@ -14,17 +13,16 @@ def parse_that_fucking_depth(data):
 	publish_depth = {}
 	publish_depth['user'] = dic['user']
 	publish_depth['datetime'] = dic['datetime']
-	
 	depth_path = dic['depth_image']['data_path']
 	height = dic['depth_image']['height']
 	width = dic['depth_image']['width']
 	float_array = np.load(depth_path)
-	plt.imshow(float_array, cmap='hot', interpolation='nearest')
+	matplotlib.pyplot.imshow(float_array, cmap='hot', interpolation='nearest')
 	user_id = dic['user']['userId']
 	datetime = dic['datetime']
-	save_path = f'/home/user/Desktop/volume/depth_images/images/{user_id}_{datetime}.png'
+	save_path = f'/volume/depth_images_{user_id}_{datetime}.png'
 	publish_depth['depth_image'] = save_path
-	plt.savefig(save_path)
+	matplotlib.pyplot.savefig(save_path)
 	return json.dumps(publish_depth)
 
 def depth_image_parser_callback(channel, method, properties, body):

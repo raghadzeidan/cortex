@@ -1,9 +1,38 @@
-version: "3"
+version: "3.3"
+
 services:
-    server:
-        build: ./cortex/api
-        volumes: 
-            - ./cortex/api:/usr/src/app
-        ports:
-            - 5001:5000
-        
+  mq:
+    image: "rabbitmq"
+    ports:
+      - 5672:5672
+    networks:
+      - cortex-net
+
+  database:
+    image: "mongo"
+    ports:
+      - 27017:27017
+    networks:
+      - cortex-net
+    volumes:
+      - "cortex-data:/var/lib/db"
+
+  server:
+    build: "./cortex/server"
+    ports:
+      - 8000:8000
+    command: "ls"
+    networks:
+      - cortex-net
+    depends_on:
+      - mq
+    volumes:
+      - "cortex-data:/var/lib/data"
+    environment: 
+        SHARED_SAVE_PATH: "/var/lib/data"
+
+networks:
+  cortex-net:
+
+volumes:
+  cortex-data:

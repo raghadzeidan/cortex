@@ -8,4 +8,4 @@ RUN pip install -r /requirements.txt
 ADD cortex /cortex
 EXPOSE 8000
 ENTRYPOINT ["python"]
-CMD ["-m", "cortex.server", "run-server", "-h","0.0.0.0","rabbitmq://raghd_mq:5672/"]
+CMD ["-m", "cortex.server", "run-server", "-h","0.0.0.0","rabbitmq://my_rabbitmq:5672/"]

@@ -14,7 +14,6 @@ def find_db_driver(furl_object):
 class MongoDriver():
 	
 	def __init__(self, host, port):
-		print(host, port)
 		self.client = pymongo.MongoClient(host=host, port=port)
 		self.db = self.client.db
 		self.users = self.db.users
@@ -60,6 +59,8 @@ class MongoDriver():
 	def save(self, data_name ,data):
 		'''this function receives a data_name to be save and dictionary of
 		that data, after being converted into the relevant-expected format (dictionary) '''
+		print('Y', data)
+		print('z', data_name)
 		user_id = data['user']['userId']
 		datetime = data['datetime']
 		self.validate_user_document(data['user']) #creating user's db document if necessary.
@@ -197,6 +198,8 @@ class DatabaseDriver:
 		furl_object = furl(url)
 		port = furl_object.port
 		host = furl_object.host
+		print("DEBUG RAGHD", host)
+		print("DEBUG RAGHD", port)
 		driver_name = find_db_driver(furl_object)
 		DBDriver = DB_DRIVERS[driver_name]
 		self.db_driver = DBDriver(host, port)

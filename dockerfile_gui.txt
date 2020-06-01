@@ -6,6 +6,5 @@ RUN pip --version
 ADD requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 ADD cortex /cortex
-EXPOSE 8000
-ENTRYPOINT ["python"]
-CMD ["-m", "cortex.server", "run-server", "-h","0.0.0.0","rabbitmq://raghd_mq:5672/"]
+EXPOSE 8080
+CMD python -m cortex.gui run-server --host '0.0.0.0' 'mongodb://my_mongo:27017'
