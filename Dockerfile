@@ -1,5 +1,11 @@
-FROM nikolaik/python-nodejs:latest
-
-COPY ./requirements.txt /
-COPY ./cortex /
-RUN pip install -r requirements.txt
+FROM python:3
+RUN which python
+RUN python --version
+RUN pip install --upgrade pip
+RUN pip --version
+ADD requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
+ADD cortex /cortex
+EXPOSE 8000
+ENTRYPOINT ["python"]
+CMD ["-m", "cortex.server", "run-server", "-h","0.0.0.0","rabbitmq://raghd_mq:5672/"]
