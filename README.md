@@ -56,8 +56,6 @@ $ python -m cortex.cli get-user 1
 }
 ```
 # Full Documentation of Functions and Modules
-In order to receive full documentation of the function, sphinx functionality has been added and
-can be accessed by running:
-    "python -m http.server" inside cortex/docs/_build/html repository
+View the full documenation of modules and functions [here](https://cortexx.readthedocs.io/en/latest/).
   
   
