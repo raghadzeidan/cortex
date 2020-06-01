@@ -13,7 +13,7 @@ def read_path(tmp_path):
 
 
 
-def test_my_client(read_ath): 
+def test_my_client(read_path): 
     assert 1==1
 
 
