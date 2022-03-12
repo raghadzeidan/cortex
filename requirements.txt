@@ -33,7 +33,7 @@ path==14.0.1
 path.py==12.4.0
 pathlib==1.0.1
 pika==1.1.0
-Pillow==7.1.2
+Pillow==9.0.1
 pluggy==0.13.1
 protobuf==3.12.2
 psutil==5.7.0
